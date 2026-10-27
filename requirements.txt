@@ -1,0 +1,30 @@
+# --- Data prep ---
+pandas
+numpy
+
+# --- Stats ---
+scipy
+matplotlib
+seaborn
+
+# --- Notebook ---
+notebook
+ipykernel
+nbstripout
+nbdime
+
+# --- ML ---
+scikit-learn
+
+# --- Streamlit ---
+streamlit
+requests
+
+# --- API ---
+fastapi
+uvicorn
+pydantic
+python-dotenv
+
+# --- Test ---
+pytest
