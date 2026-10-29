@@ -1,0 +1,2 @@
+# UI-only dependencies; reconcile with the team's shared requirements in T05.
+streamlit==1.65.0
