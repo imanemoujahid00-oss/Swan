@@ -17,7 +17,7 @@ def questionnaire():
     return app
 
 
-def answer(app, adult="Yes", concern="Moisturizers for acne-prone skin", flags=None):
+def answer(app, adult="Yes", concern="Acne-prone skin", flags=None):
     app.radio(key="q_adult").set_value(adult)
     app.radio(key="q_concern").set_value(concern)
     app.multiselect(key="q_flags").set_value(flags or ["None of these"])
@@ -35,10 +35,11 @@ def test_unanswered_required_questions_do_not_show_results():
 
 
 @pytest.mark.parametrize("adult,concern,flags,expected", [
-    ("Yes", "Moisturizers for acne-prone skin", ["None of these"], "results"),
-    ("No", "Moisturizers for acne-prone skin", ["None of these"], "outside_scope"),
-    ("Yes", "Something else", ["None of these"], "outside_scope"),
-    ("Yes", "Moisturizers for acne-prone skin", ["I use a prescribed skin treatment"], "professional_guidance"),
+    ("Yes", "Acne-prone skin", ["None of these"], "results"),
+    ("No", "Acne-prone skin", ["None of these"], "outside_scope"),
+    ("Yes", "Dryness / skin barrier", ["None of these"], "coming_soon"),
+    ("Yes", "Sensitivity / irritation", ["None of these"], "coming_soon"),
+    ("Yes", "Acne-prone skin", ["I use a prescribed skin treatment"], "professional_guidance"),
 ])
 def test_scope_routes(adult, concern, flags, expected):
     app = questionnaire()
@@ -90,3 +91,21 @@ def test_preferences_and_blemish_score_do_not_fabricate_personalized_results():
     assert app.session_state["view"] == "results"
     assert [h.value for h in app.subheader] == first
     assert any("not personalized" in w.value for w in app.warning)
+
+
+@pytest.mark.parametrize("concern,code", [("Dryness / skin barrier", "dryness_barrier"), ("Sensitivity / irritation", "sensitivity")])
+def test_future_concerns_remain_distinct_and_survive_editing(concern, code):
+    app = questionnaire()
+    assert len(app.radio(key="q_concern").options) == 3
+    app.select_slider(key="q_blemish").set_value(5)
+    answer(app, concern=concern)
+    assert app.session_state["profile"].concern == code
+    assert app.session_state["profile"].blemish_level is None
+    assert any("Not available" in h.value for h in app.title)
+    assert not any("Example moisturizer" in h.value for h in app.subheader)
+    app.button(key="edit").click().run()
+    assert app.radio(key="q_concern").value == concern
+    assert app.select_slider(key="q_blemish").value == "Prefer not to say"
+    answer(app, concern="Acne-prone skin")
+    assert app.session_state["view"] == "results"
+    assert not app.exception

@@ -38,7 +38,16 @@ The draft follows the questionnaire in Loredana's
 blemishes, scope flags, skin type, reactivity and ingredient preferences. Texture
 is excluded. The existing notebook is not modified or merged by this branch.
 
-The acne-prone wording and scope messages are placeholders for team confirmation.
+The interface shows three concerns: acne-prone skin, dryness / skin barrier,
+and sensitivity / irritation. Only acne-prone skin reaches the fictional
+moisturizer results. The other two retain distinct profile values and show a
+not-available-yet screen with no product results. They are future scope, not
+additional supported recommendation paths. The blemish answer is only retained
+for the acne-prone profile.
+
+This three-choice presentation extends Loredana's original acne-prone / other
+question without expanding the MVP ranking scope. The acne-prone wording and
+scope messages are placeholders for team confirmation.
 The 1–5 blemish answer is descriptive only: no clinical severity threshold is
 invented. Skin type, reactivity and avoid preferences do not personalize the
 fixtures. The scope flags reproduce a proposed prototype boundary, not clinical

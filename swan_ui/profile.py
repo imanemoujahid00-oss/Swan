@@ -22,6 +22,8 @@ def preview_route(profile: Profile) -> str:
     """Return a demo screen, never a diagnosis or suitability verdict."""
     if not profile.is_adult:
         return "outside_scope"
+    if profile.concern in {"dryness_barrier", "sensitivity"}:
+        return "coming_soon"
     if profile.concern != "acne_prone":
         return "outside_scope"
     if profile.referral_flags:
