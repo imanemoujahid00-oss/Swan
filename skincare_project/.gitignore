@@ -1,0 +1,33 @@
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter temporary files
+.ipynb_checkpoints/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# VS Code local settings
+.vscode/
+
+# Temporary and backup files
+*.tmp
+*.bak
+~$*.xlsx
+
+# Generated catalogue outputs
+data/interim/catalogue_provisional.csv
+data/interim/ingredient_comparison.csv
+
+# Keep the three required manual-review files tracked
+!data/interim/manual_ingredient_review.xlsx
+!data/interim/additional_single_ingredient_review.csv
+!data/interim/duplicate_manual_review.csv

@@ -1,0 +1,2 @@
+source_id,filename,source_name,source_url,retrieval_date,retrieval_method,source_version,license,sha256,number_of_rows,notes
+SOURCE_001,moisturizers_with_cosing.csv,openbeautyfacts,https://world.openbeautyfacts.org,27.09.2026,Manual CSV download,unknown,ODbL 1.0,8c822e0d6548ffb6e5ed208374b58eb04dbd3e30b92d9a07839593bc6e0c77c7,244,CosIng-enriched moisturizer catalogue
