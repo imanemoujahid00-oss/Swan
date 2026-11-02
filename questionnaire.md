@@ -2,13 +2,13 @@
 
 ## Scope
 
-Decided at the Meet on 26/10: adults with acne-prone skin and mild blemishes. Swan suggests 3 moisturizers. Products sold in France for now.
+Decided at the Meet on 26/10: adults with acne-prone skin and mild blemishes. Swan suggests 3 alternative moisturizers, not three products to apply together. Products sold in France for now.
 Swan does not diagnose or treat. We say "acne-prone skin", not "acne treatment".
 Changes since v1 (25/10): moisturizers only, France only, Q3 is now a 1 to 5 scale, reactivity is yes/no, texture is removed.
 
 ## Questions
 
-Questions 1 to 4 come first. If one of them leads to a referral, we stop there and show the message.
+Questions 1 to 4 come first. Stop at a referral or out-of-scope result; later answers are not required. For Q4 and Q7, "None" cannot be selected with another answer.
 
 1. Are you 18 or older? (yes / no)
 2. What would you like help with? (a routine for acne-prone skin / something else)
@@ -64,4 +64,11 @@ Example:
 | Q3 level 4 or 5 | referral | "Lots of red, painful or deep spots, or scars, are worth showing to a doctor or dermatologist." |
 | Prescribed treatment | referral | "Check with the person who prescribed your treatment before adding new products." |
 | Sudden flare-up or worrying change | referral | "A sudden or unusual change in your skin should be checked by a doctor." |
-| Pregnant or breastfeeding | referral | "Indicative Routine - if you have any concern please ask your pharmacisit or a Dermatologist or GP" |
+| Pregnant or breastfeeding | referral | "This MVP does not suggest products during pregnancy or breastfeeding. Please ask a pharmacist or your healthcare professional for advice." |
+
+## Other points and ranking for scoring :
+- Avoid fragrance filters `parfum` only, not fragrance allergens automatically.
+- Normal and not-sure skin follow the same provisional scoring rule as combination skin.
+- Keep the anti-acne ingredient bonus in the baseline score.
+- Test profiles include `expected_traits`; results report texture fit against our current proxies.
+- Under 18: referral. Other concern: out of scope.
