@@ -33,7 +33,7 @@ def check_scope(profile):
     level = profile.get('blemish_level')
     
     if type(level) is not int or level not in [1, 2, 3, 4, 5]:
-        return 'incomplete profile'
+        return 'incomplete_profile'
     
     if level >= 4:
         return 'referral'
