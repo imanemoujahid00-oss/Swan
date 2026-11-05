@@ -1,14 +1,14 @@
 # Deploy the agreed MVP
 
-Deployed on 5 November 2026 in the approved project and Paris region. [Demo interface](https://swan-mvp-ui-1083386136867.europe-west9.run.app). See the [release record](release-2026-11-05.md) for versions and verification; independent team acceptance remains open.
+Deployed on 5 November 2026 in Paris. [Demo interface](https://swan-mvp-ui-1083386136867.europe-west9.run.app). See the [external MVP overview](mvp-overview.md). Operational release details are maintained separately in restricted team documents; independent team acceptance remains open.
 
 ## Release configuration prepared on 5 November
 
-Approved target: `just-effect-441517-t0`, `europe-west9` (Paris). The deployed services use request-based billing, minimum zero and maximum one instance per service. This reduces idle cost; it is not a spending cap. An active Streamlit WebSocket session can keep a UI instance active; close unused demo tabs.
+Region: `europe-west9` (Paris). Use the project's approved deployment settings. The current MVP services use request-based billing, minimum zero and maximum one instance per service. This reduces idle cost; it is not a spending cap. An active Streamlit WebSocket session can keep a UI instance active; close unused demo tabs.
 
 Build both images with `cloudbuild.yaml`, supplying `_REGISTRY` (the Artifact Registry repository path) and `_TAG` (the exact Git commit). `.gcloudignore` excludes local data, credentials and development files from the uploaded source. The API image downloads only checksum-verified runtime artifacts.
 
-The UI uses `swan-mvp-ui` and the API uses `swan-mvp-api` service identities. Only the UI identity gets `roles/run.invoker` on the API. Set `SWAN_API_URL` to the API's Cloud Run URL and `SWAN_API_AUTH=cloudrun` in the UI. The server obtains a short-lived ID token from Cloud Run metadata and sends it to the private API; no service-account key file is needed. Local development remains unauthenticated loopback unless that flag is explicitly enabled.
+Use separate UI and API service identities. Only the UI identity gets `roles/run.invoker` on the API. Set `SWAN_API_URL` to the API's Cloud Run URL and `SWAN_API_AUTH=cloudrun` in the UI. The server obtains a short-lived ID token from Cloud Run metadata and sends it to the private API; no service-account key file is needed. Local development remains unauthenticated loopback unless that flag is explicitly enabled.
 
 The public link is the UI only. Test the API using an authorized identity and verify anonymous API requests are rejected. Public UI access exposes the demonstration to anyone with its URL; no questionnaire database is implemented. Do not log request bodies, credentials or profile answers.
 
