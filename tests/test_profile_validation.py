@@ -5,6 +5,7 @@ from pathlib import Path
 import sys
 import types
 import unittest
+import numpy as np
 from unittest.mock import Mock, patch
 
 
@@ -43,6 +44,21 @@ class ProfileValidationTests(unittest.TestCase):
         self.assertEqual(result["status"], "incomplete_profile")
         self.assertTrue(result["message"])
         self.assertEqual(result["results"], [])
+
+    def test_numpy_integer_levels_follow_existing_routes(self):
+        for dtype in (np.int32, np.int64):
+            for level in range(1, 6):
+                with self.subTest(dtype=dtype, level=level):
+                    expected = "eligible" if level <= 3 else "referral"
+                    self.assertEqual(self.module.check_scope(
+                        self.profile | {"blemish_level": dtype(level)}), expected)
+
+    def test_numpy_invalid_values_do_not_reach_ranking(self):
+        for value in (np.bool_(True), np.float64(2), np.int64(0), np.int64(6)):
+            with self.subTest(value=value):
+                result = self.module.recommend(self.profile | {"blemish_level": value}, None)
+                self.assertEqual(result["status"], "incomplete_profile")
+                self.assertEqual(result["results"], [])
 
     def test_existing_early_exit_routes(self):
         for changes, expected in (
