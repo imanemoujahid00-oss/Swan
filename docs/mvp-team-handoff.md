@@ -1,6 +1,10 @@
 # Swan MVP — explanation and demonstration guide
 
-Release status: deployment preparation in progress. No hosted link is claimed in this version.
+Release status: deployed and technically verified on 5 November 2026. Final independent team acceptance is still open.
+
+**Demo link:** [Open Swan MVP](https://swan-mvp-ui-1083386136867.europe-west9.run.app)
+
+The [release record](release-2026-11-05.md) contains the deployed versions, build/check links and remaining acceptance items.
 
 ## What is connected
 
@@ -30,7 +34,8 @@ The current data handoff contains 50 products. Six quality-follow-up products we
 - [PR #4](https://github.com/imanemoujahid00-oss/Swan/pull/4): Loubna's Python/NumPy integer-level correction, missing module import repaired, invalid values still rejected; merged.
 - The `aroma` fragrance alias is corrected at load time. Source CSV bytes remain unchanged.
 - The regenerated 31 synthetic profiles pass routing checks. This export is not the original file from the failing run and routing success does not establish recommendation relevance.
-- Local suite after private-API client preparation: 44 tests and 29 subtests passed; two expected personalisation checks remain documented limitations. Hosted tests are still pending.
+- Local suite after private-API client preparation: 44 tests and 29 subtests passed; two expected personalisation checks remain documented limitations.
+- All 51 hosted HTTP checks passed, including the 31 synthetic profiles. The public browser journey also returned real products through the authenticated private API; editing preserved answers, the future-concern route showed no products, and reset returned to welcome. Independent team acceptance remains open.
 
 ## Who checks what
 
@@ -45,7 +50,7 @@ The final hosted journey is checked jointly. Someone other than the deployer sho
 
 ## Demonstration sequence
 
-1. Open the hosted interface from another machine/browser once available.
+1. Open the demo link from another machine/browser. The first load can take longer after an idle period because the services scale down to zero.
 2. Complete an eligible adult acne-prone profile with level 2, then show real product names, IDs and reasons.
 3. Explain the two ranking indicators and deterministic tie-breaking.
 4. Show a scope/referral example returning no products, then fragrance avoidance.
@@ -61,4 +66,4 @@ Do not use real personal health information for a demo; the shared profiles are 
 - [Project sheet](https://docs.google.com/spreadsheets/d/1OBQAgC6cJkmGy9qKlORpLAbg3JBU5QE_EfDvTT6LJig/edit)
 - [Task board](https://trello.com/b/nIMWyagN/swan-team-tasks)
 
-Hosted UI/API URLs, image digests, deployed Git commit, artifact version and hosted results will be added after verification.
+The [release record](release-2026-11-05.md) includes hosted UI/API URLs, image digests, deployed Git commit, artifact version and hosted results. The API is private: opening its URL directly without authorization returns 403, which is expected.

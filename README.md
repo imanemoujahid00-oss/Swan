@@ -61,7 +61,7 @@ The active workflow in `.github/workflows/checks.yml` downloads pinned artifacts
 
 ## Deployment
 
-`Dockerfile` runs the API on `$PORT` (default 8080), downloads and verifies the three artifacts at build time, and disables request access logs. `Dockerfile.ui` runs Streamlit and reads `SWAN_API_URL`. See `docs/deployment.md` for the commands. The hosting project/region and release approval still need confirmation. No remote deployment has been claimed or completed by this branch.
+`Dockerfile` runs the API on `$PORT` (default 8080), downloads and verifies the three artifacts at build time, and disables application request access logs. `Dockerfile.ui` runs Streamlit and reads `SWAN_API_URL`. The [hosted MVP](https://swan-mvp-ui-1083386136867.europe-west9.run.app) was deployed on 5 November in Paris: public interface, private API, keyless service authentication. See [release evidence](docs/release-2026-11-05.md), [team/demo guide](docs/mvp-team-handoff.md), and [deployment instructions](docs/deployment.md). Independent team acceptance remains open.
 
 No database or questionnaire-retention feature is implemented. Answers transit the API and remain in the Streamlit session; do not log request bodies. Confirm the hosting provider's logging/access settings before release. This MVP does not diagnose or establish clinical effectiveness or individual suitability.
 

@@ -1,10 +1,10 @@
 # Deploy the agreed MVP
 
-Deployment has not yet been executed. Confirm the project, billing/access and region first. An existing configured project is not, by itself, a confirmed project choice.
+Deployed on 5 November 2026 in the approved project and Paris region. [Demo interface](https://swan-mvp-ui-1083386136867.europe-west9.run.app). See the [release record](release-2026-11-05.md) for versions and verification; independent team acceptance remains open.
 
 ## Release configuration prepared on 5 November
 
-Approved target: `just-effect-441517-t0`, `europe-west9` (Paris). Deployment is not complete until the release evidence below is recorded. Use request-based billing, minimum zero and maximum one instance per service. This reduces idle cost; it is not a spending cap. An active Streamlit WebSocket session can keep a UI instance active.
+Approved target: `just-effect-441517-t0`, `europe-west9` (Paris). The deployed services use request-based billing, minimum zero and maximum one instance per service. This reduces idle cost; it is not a spending cap. An active Streamlit WebSocket session can keep a UI instance active; close unused demo tabs.
 
 Build both images with `cloudbuild.yaml`, supplying `_REGISTRY` (the Artifact Registry repository path) and `_TAG` (the exact Git commit). `.gcloudignore` excludes local data, credentials and development files from the uploaded source. The API image downloads only checksum-verified runtime artifacts.
 
