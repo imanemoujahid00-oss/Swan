@@ -1,123 +1,122 @@
-"""Exercise the handoff flow and ensure fixtures cannot look personalized."""
-
+"""Check the sequential journey, durable answers, scope and reset."""
 from pathlib import Path
 from unittest.mock import patch
-
 import pytest
 from streamlit.testing.v1 import AppTest
-
-
-APP = Path(__file__).resolve().parents[1] / "app.py"
-
+APP=Path(__file__).resolve().parents[1]/'app.py'
 
 @pytest.fixture(autouse=True)
 def api_response():
-    response = {"status": "ok", "message": "Three alternatives available.", "results": [
-        {"code": str(i), "product_name": "Test product " + str(i), "reason": "Ingredient indicator", "score": 2}
-        for i in range(3)], "catalogue_version": "test-fixture", "ranker_version": "test-fixture"}
-    with patch("swan_ui.client.fetch_recommendations", return_value=response):
+    response={'status':'ok','results':[{'code':str(i),'product_name':f'Test product {i}','reason':'Ingredient indicator','score':2} for i in range(3)]}
+    with patch('swan_ui.client.fetch_recommendations',return_value=response):
         yield
 
+def start():
+    a=AppTest.from_file(str(APP)).run()
+    a.button(key='begin').click().run()
+    assert not a.exception
+    return a
 
-def questionnaire():
-    app = AppTest.from_file(str(APP)).run()
-    assert not app.exception
-    app.button(key="begin").click().run()
-    assert not app.exception
-    return app
+def next_step(a):
+    a.button(key='next_question').click().run()
+    assert not a.exception
 
-
-def answer(app, adult="Yes", concern="Acne-prone skin", flags=None):
-    app.radio(key="q_adult").set_value(adult)
-    app.radio(key="q_concern").set_value(concern)
-    app.multiselect(key="q_flags").set_value(flags or ["None of these"])
-    if concern == "Acne-prone skin":
-        app.select_slider(key="q_blemish").set_value(2)
-        app.radio(key="q_reactivity").set_value("No")
-    app.button(key="FormSubmitter:profile_form-See my results").click().run()
-    assert not app.exception
-
-
-def test_unanswered_required_questions_do_not_show_results():
-    app = questionnaire()
-    app.button(key="FormSubmitter:profile_form-See my results").click().run()
-    assert not app.exception
-    assert app.error
-    assert app.session_state["view"] == "questionnaire"
-    assert not any("Example moisturizer" in h.value for h in app.subheader)
+def complete(a,adult='Yes',concern='Acne-prone skin',flags=None,level=2):
+    a.radio(key='q_adult').set_value(adult);next_step(a)
+    if adult=='No': return
+    a.radio(key='q_concern').set_value(concern);next_step(a)
+    if concern!='Acne-prone skin': return
+    a.select_slider(key='q_blemish').set_value(level);next_step(a)
+    if level>=4: return
+    a.multiselect(key='q_flags').set_value(flags or ['None of these']);next_step(a)
+    if flags: return
+    a.selectbox(key='q_skin').set_value('Dry');next_step(a)
+    a.radio(key='q_reactivity').set_value('No');next_step(a)
+    a.multiselect(key='q_avoid').set_value(['Fragrance']);next_step(a)
+    a.button(key='submit_profile').click().run()
+    assert not a.exception
 
 
-@pytest.mark.parametrize("adult,concern,flags,expected", [
-    ("Yes", "Acne-prone skin", ["None of these"], "results"),
-    ("No", "Acne-prone skin", ["None of these"], "outside_scope"),
-    ("Yes", "Dryness / skin barrier", ["None of these"], "coming_soon"),
-    ("Yes", "Sensitivity / irritation", ["None of these"], "coming_soon"),
-    ("Yes", "Acne-prone skin", ["I use a prescribed skin treatment"], "professional_guidance"),
+
+def test_required_answer_blocks_progress():
+    a=start();next_step(a)
+    assert a.error
+    assert a.session_state['question_step']==0
+
+@pytest.mark.parametrize('adult,concern,flags,level,expected',[
+    ('Yes','Acne-prone skin',None,2,'results'),
+    ('No','Acne-prone skin',None,2,'outside_scope'),
+    ('Yes','Dryness / skin barrier',None,2,'coming_soon'),
+    ('Yes','Sensitivity / irritation',None,2,'coming_soon'),
+    ('Yes','Acne-prone skin',['I use a skin treatment prescribed by a doctor'],2,'professional_guidance'),
+    ('Yes','Acne-prone skin',None,5,'professional_guidance'),
 ])
-def test_scope_routes(adult, concern, flags, expected):
-    app = questionnaire()
-    answer(app, adult, concern, flags)
-    assert app.session_state["view"] == expected
-    names = [h.value for h in app.subheader if h.value.startswith("Test product")]
-    if expected == "results":
-        assert len(names) == 3
-        assert any("do not currently change ranking" in c.value for c in app.caption)
-    else:
-        assert names == []
+def test_routes(adult,concern,flags,level,expected):
+    a=start();complete(a,adult,concern,flags,level)
+    assert a.session_state['view']==expected
+    assert len([h for h in a.subheader if h.value.startswith('Test product')])==(3 if expected=='results' else 0)
 
 
-def test_none_and_scope_flags_cannot_be_selected_together():
-    app = questionnaire()
-    answer(app, flags=["None of these", "I use a prescribed skin treatment"])
-    assert app.error
-    assert app.session_state["view"] == "questionnaire"
+def test_back_edit_and_confirmed_reset_preserve_then_clear_answers():
+    a=start()
+    a.radio(key='q_adult').set_value('Yes');next_step(a)
+    a.button(key='previous_question').click().run()
+    assert a.radio(key='q_adult').value=='Yes'
+    complete(a)
+    a.button(key='edit').click().run()
+    a.button(key='review_4').click().run()
+    assert a.selectbox(key='q_skin').value=='Dry'
+    a.selectbox(key='q_skin').set_value('Oily');next_step(a)
+    assert a.radio(key='q_reactivity').value=='No'
+    next_step(a)
+    assert a.multiselect(key='q_avoid').value==['Fragrance']
+    next_step(a)
+    a.button(key='submit_profile').click().run()
+    assert a.session_state['profile'].skin_type=='oily'
+    a.button(key='reset').click().run()
+    a.button(key='cancel_reset').click().run()
+    assert 'profile' in a.session_state
+    a.button(key='reset').click().run()
+    a.button(key='confirm_reset').click().run()
+    assert a.session_state['view']=='welcome'
+    assert 'answers' not in a.session_state
+    a.button(key='begin').click().run()
+    assert a.radio(key='q_adult').value is None
 
 
-def test_edit_preserves_answers_and_start_over_clears_them():
-    app = questionnaire()
-    app.selectbox(key="q_skin").set_value("Dry")
-    app.multiselect(key="q_avoid").set_value(["Fragrance"])
-    answer(app)
-    app.button(key="edit").click().run()
-    assert app.selectbox(key="q_skin").value == "Dry"
-    assert app.multiselect(key="q_avoid").value == ["Fragrance"]
-    app.button(key="reset").click().run()
-    assert app.session_state["view"] == "welcome"
-    assert "profile" not in app.session_state
-    app.button(key="begin").click().run()
-    assert app.radio(key="q_adult").value is None
-    assert app.selectbox(key="q_skin").value == "Not sure"
-    assert app.multiselect(key="q_avoid").value == []
+def test_conflicting_scope_flags_block_progress():
+    a=start()
+    a.radio(key='q_adult').set_value('Yes');next_step(a)
+    a.radio(key='q_concern').set_value('Acne-prone skin');next_step(a)
+    a.select_slider(key='q_blemish').set_value(2);next_step(a)
+    a.multiselect(key='q_flags').set_value(['None of these','I use a skin treatment prescribed by a doctor']);next_step(a)
+    assert a.error
+    assert a.session_state['question_step']==3
 
 
-def test_high_blemish_level_routes_to_guidance_instead_of_products():
-    app = questionnaire()
-    answer(app)
-    first = [h.value for h in app.subheader]
-    app.button(key="edit").click().run()
-    app.selectbox(key="q_skin").set_value("Oily")
-    app.radio(key="q_reactivity").set_value("Yes")
-    app.multiselect(key="q_avoid").set_value(["Fragrance", "Essential oils"])
-    app.select_slider(key="q_blemish").set_value(5)
-    app.button(key="FormSubmitter:profile_form-See my results").click().run()
-    assert not app.exception
-    assert app.session_state["view"] == "professional_guidance"
-    assert not any(h.value.startswith("Test product") for h in app.subheader)
+@pytest.mark.parametrize("level", [1, 2])
+def test_missing_reactivity_has_its_own_message(level):
+    a=start()
+    a.radio(key='q_adult').set_value('Yes');next_step(a)
+    a.radio(key='q_concern').set_value('Acne-prone skin');next_step(a)
+    a.select_slider(key='q_blemish').set_value(level);next_step(a)
+    a.multiselect(key='q_flags').set_value(['None of these']);next_step(a)
+    next_step(a)
+    assert a.radio(key='q_reactivity').options==['Yes','No']
+    next_step(a)
+    assert any('reactivity' in e.value for e in a.error)
+    assert not any('blemish' in e.value for e in a.error)
+    a.radio(key='q_reactivity').set_value('No');next_step(a)
+    next_step(a)
+    a.button(key='submit_profile').click().run()
+    assert a.session_state['view']=='results'
 
 
-@pytest.mark.parametrize("concern,code", [("Dryness / skin barrier", "dryness_barrier"), ("Sensitivity / irritation", "sensitivity")])
-def test_future_concerns_remain_distinct_and_survive_editing(concern, code):
-    app = questionnaire()
-    assert len(app.radio(key="q_concern").options) == 3
-    app.select_slider(key="q_blemish").set_value(5)
-    answer(app, concern=concern)
-    assert app.session_state["profile"].concern == code
-    assert app.session_state["profile"].blemish_level is None
-    assert any("Not available" in h.value for h in app.title)
-    assert not any("Example moisturizer" in h.value for h in app.subheader)
-    app.button(key="edit").click().run()
-    assert app.radio(key="q_concern").value == concern
-    assert app.select_slider(key="q_blemish").value == "Prefer not to say"
-    answer(app, concern="Acne-prone skin")
-    assert app.session_state["view"] == "results"
-    assert not app.exception
+def test_no_current_blemishes_exits_without_inventing_a_level():
+    a=start()
+    a.radio(key='q_adult').set_value('Yes');next_step(a)
+    a.radio(key='q_concern').set_value('Acne-prone skin');next_step(a)
+    a.select_slider(key='q_blemish').set_value('No current blemishes');next_step(a)
+    assert a.session_state['view']=='outside_scope'
+    assert a.session_state['profile'].blemish_level is None
+    assert any('no current blemishes' in x.value for x in a.markdown)
