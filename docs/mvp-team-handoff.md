@@ -2,9 +2,9 @@
 
 Release status: deployment preparation in progress. No hosted link is claimed in this version.
 
-## What I connected
+## What is connected
 
-I connected our existing Streamlit questionnaire to a FastAPI service that calls Loubna's accepted rule-based moisturizer ranker. The API loads the three agreed CSVs from the versioned, checksum-verified handoff. A user receives up to three moisturizer alternatives with product IDs and explanations, or a clear scope, incomplete-answer or no-result message.
+The existing Streamlit questionnaire connects to a FastAPI service that calls Loubna's accepted rule-based moisturizer ranker. The API loads the three agreed CSVs from the versioned, checksum-verified handoff. A user receives up to three moisturizer alternatives with product IDs and explanations, or a clear scope, incomplete-answer or no-result message.
 
 ```mermaid
 flowchart LR
