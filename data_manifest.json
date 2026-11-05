@@ -1,0 +1,26 @@
+{
+  "version": "2026-11-05-loubna-baseline",
+  "source_message": "https://lewagon-alumni.slack.com/archives/C0CADRJ68JE/p1793864827480379",
+  "source_commit": "875453365de03f742527210708fcf13516fca794",
+  "provenance_note": "Ranking CSV downloaded from Slack. Ingredient and scoring CSVs downloaded from the exact Slack attachment URLs through Chrome; their bytes match the complete-preview recovery used for the shared copies. Original CSV bytes remain unchanged by the runtime fragrance-alias correction.",
+  "files": {
+    "baseline_ranking_data.csv": {
+      "drive_id": "1B-sNFxD7fdyeP8zVNnv-hesCobwbcvox",
+      "url": "https://drive.google.com/file/d/1B-sNFxD7fdyeP8zVNnv-hesCobwbcvox/view",
+      "sha256": "0c6f6e393d7248d045fb4b8788d6c852164f5d7f13e541936b0ddb9823a0c669",
+      "bytes": 91572
+    },
+    "baseline_moisturising_ingredients.csv": {
+      "drive_id": "1TTSCys7Q2yy_eWVdyKdOXXwy9CSw0Dmn",
+      "url": "https://drive.google.com/file/d/1TTSCys7Q2yy_eWVdyKdOXXwy9CSw0Dmn/view",
+      "sha256": "ee2071411d1fb5f265729a8724775554a8223c24ff8a83188921196afa195dc3",
+      "bytes": 105
+    },
+    "baseline_scoring_table.csv": {
+      "drive_id": "1ec09YAy9pwHo9jC9i2u2x-DQYtTod5j-",
+      "url": "https://drive.google.com/file/d/1ec09YAy9pwHo9jC9i2u2x-DQYtTod5j-/view",
+      "sha256": "0858af6678480d3e13fb1b9801711fe354819fc45d05342384be68671e8ee138",
+      "bytes": 46
+    }
+  }
+}

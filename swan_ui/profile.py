@@ -26,6 +26,8 @@ def preview_route(profile: Profile) -> str:
         return "coming_soon"
     if profile.concern != "acne_prone":
         return "outside_scope"
+    if profile.blemish_level is not None and profile.blemish_level >= 4:
+        return "professional_guidance"
     if profile.referral_flags:
         return "professional_guidance"
     return "results"

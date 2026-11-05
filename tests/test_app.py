@@ -1,12 +1,22 @@
 """Exercise the handoff flow and ensure fixtures cannot look personalized."""
 
 from pathlib import Path
+from unittest.mock import patch
 
 import pytest
 from streamlit.testing.v1 import AppTest
 
 
 APP = Path(__file__).resolve().parents[1] / "app.py"
+
+
+@pytest.fixture(autouse=True)
+def api_response():
+    response = {"status": "ok", "message": "Three alternatives available.", "results": [
+        {"code": str(i), "product_name": "Test product " + str(i), "reason": "Ingredient indicator", "score": 2}
+        for i in range(3)], "catalogue_version": "test-fixture", "ranker_version": "test-fixture"}
+    with patch("swan_ui.client.fetch_recommendations", return_value=response):
+        yield
 
 
 def questionnaire():
@@ -21,13 +31,16 @@ def answer(app, adult="Yes", concern="Acne-prone skin", flags=None):
     app.radio(key="q_adult").set_value(adult)
     app.radio(key="q_concern").set_value(concern)
     app.multiselect(key="q_flags").set_value(flags or ["None of these"])
-    app.button(key="FormSubmitter:profile_form-Preview the next step").click().run()
+    if concern == "Acne-prone skin":
+        app.select_slider(key="q_blemish").set_value(2)
+        app.radio(key="q_reactivity").set_value("No")
+    app.button(key="FormSubmitter:profile_form-See my results").click().run()
     assert not app.exception
 
 
 def test_unanswered_required_questions_do_not_show_results():
     app = questionnaire()
-    app.button(key="FormSubmitter:profile_form-Preview the next step").click().run()
+    app.button(key="FormSubmitter:profile_form-See my results").click().run()
     assert not app.exception
     assert app.error
     assert app.session_state["view"] == "questionnaire"
@@ -45,10 +58,10 @@ def test_scope_routes(adult, concern, flags, expected):
     app = questionnaire()
     answer(app, adult, concern, flags)
     assert app.session_state["view"] == expected
-    names = [h.value for h in app.subheader if h.value.startswith("Example moisturizer")]
+    names = [h.value for h in app.subheader if h.value.startswith("Test product")]
     if expected == "results":
         assert len(names) == 3
-        assert any("not personalized" in w.value for w in app.warning)
+        assert any("do not currently change ranking" in c.value for c in app.caption)
     else:
         assert names == []
 
@@ -77,7 +90,7 @@ def test_edit_preserves_answers_and_start_over_clears_them():
     assert app.multiselect(key="q_avoid").value == []
 
 
-def test_preferences_and_blemish_score_do_not_fabricate_personalized_results():
+def test_high_blemish_level_routes_to_guidance_instead_of_products():
     app = questionnaire()
     answer(app)
     first = [h.value for h in app.subheader]
@@ -86,11 +99,10 @@ def test_preferences_and_blemish_score_do_not_fabricate_personalized_results():
     app.radio(key="q_reactivity").set_value("Yes")
     app.multiselect(key="q_avoid").set_value(["Fragrance", "Essential oils"])
     app.select_slider(key="q_blemish").set_value(5)
-    app.button(key="FormSubmitter:profile_form-Preview the next step").click().run()
+    app.button(key="FormSubmitter:profile_form-See my results").click().run()
     assert not app.exception
-    assert app.session_state["view"] == "results"
-    assert [h.value for h in app.subheader] == first
-    assert any("not personalized" in w.value for w in app.warning)
+    assert app.session_state["view"] == "professional_guidance"
+    assert not any(h.value.startswith("Test product") for h in app.subheader)
 
 
 @pytest.mark.parametrize("concern,code", [("Dryness / skin barrier", "dryness_barrier"), ("Sensitivity / irritation", "sensitivity")])

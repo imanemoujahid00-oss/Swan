@@ -1,0 +1,322 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Swan MVP API",
+    "version": "mvp-2026-11-05"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ready": {
+      "get": {
+        "summary": "Ready",
+        "operationId": "ready_ready_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/recommendations": {
+      "post": {
+        "summary": "Recommendations",
+        "operationId": "recommendations_v1_recommendations_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecommendationResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ProductResult": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "product_name": {
+            "type": "string",
+            "title": "Product Name"
+          },
+          "moisturising_flag": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Moisturising Flag"
+          },
+          "has_acne_active": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Has Acne Active"
+          },
+          "score": {
+            "type": "number",
+            "title": "Score"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          }
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "product_name",
+          "moisturising_flag",
+          "has_acne_active",
+          "score",
+          "reason"
+        ],
+        "title": "ProductResult"
+      },
+      "ProfileRequest": {
+        "properties": {
+          "is_adult": {
+            "type": "boolean",
+            "title": "Is Adult"
+          },
+          "concern": {
+            "type": "string",
+            "enum": [
+              "acne_prone",
+              "dryness_barrier",
+              "sensitivity",
+              "other"
+            ],
+            "title": "Concern"
+          },
+          "blemish_level": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Blemish Level"
+          },
+          "referral_flags": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "prescribed_treatment",
+                "unusual_lesion",
+                "pregnant_or_breastfeeding"
+              ]
+            },
+            "type": "array",
+            "title": "Referral Flags"
+          },
+          "skin_type": {
+            "type": "string",
+            "enum": [
+              "oily",
+              "combination",
+              "normal",
+              "dry",
+              "not_sure"
+            ],
+            "title": "Skin Type",
+            "default": "not_sure"
+          },
+          "reactivity": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reactivity"
+          },
+          "avoid": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "fragrance",
+                "essential_oils"
+              ]
+            },
+            "type": "array",
+            "title": "Avoid"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "is_adult",
+          "concern"
+        ],
+        "title": "ProfileRequest"
+      },
+      "RecommendationResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "insufficient_results",
+              "no_result",
+              "incomplete_profile",
+              "referral",
+              "out_of_scope",
+              "coming_soon"
+            ],
+            "title": "Status"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/ProductResult"
+            },
+            "type": "array",
+            "title": "Results"
+          },
+          "catalogue_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Catalogue Version"
+          },
+          "ranker_version": {
+            "type": "string",
+            "title": "Ranker Version"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "message",
+          "results",
+          "catalogue_version",
+          "ranker_version"
+        ],
+        "title": "RecommendationResponse"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}
