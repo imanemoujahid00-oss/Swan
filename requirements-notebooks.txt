@@ -7,3 +7,7 @@ ipykernel
 nbstripout
 nbdime
 scikit-learn
+
+# Lina: fuzzy ingredient matching and Excel manual-review files.
+rapidfuzz==3.14.5
+openpyxl==3.1.5
