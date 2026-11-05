@@ -293,8 +293,6 @@ def results() -> None:
             st.write("This baseline uses two product indicators. Skin type and reactivity do not yet change the score. With the same exclusions, the same alternatives can appear; this is not a fully personalised ranking.")
         with st.expander("About these results"):
             st.write("Products are ranked using the agreed moisturising and acne-related indicators. Ties use product codes for a reproducible order. Ingredient concentration and clinical effectiveness are not assessed.")
-            st.caption("Catalogue: " + str(result.get("catalogue_version", "unavailable")))
-            st.caption("Ranker: " + str(result.get("ranker_version", "unavailable")))
     else:
         st.error("We could not read this recommendation response. Please try again later.")
     st.button("Edit my answers", key="edit", on_click=navigate, args=("questionnaire",))
