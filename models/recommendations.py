@@ -104,7 +104,7 @@ def outcome_message(profile, status):
 
 
 
-def recommend(profile, data):
+def recommend(profile, data, *, ranker=None):
     status = check_scope(profile)
     
     if status != 'eligible':
@@ -151,4 +151,4 @@ def recommend(profile, data):
             
     selected = filter_avoid(data, avoid)
     
-    return rank_moisturizers(selected)
+    return (ranker or rank_moisturizers)(selected)

@@ -1,0 +1,9 @@
+-r requirements-dev.txt
+scipy
+matplotlib
+seaborn
+notebook
+ipykernel
+nbstripout
+nbdime
+scikit-learn

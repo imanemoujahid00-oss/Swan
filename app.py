@@ -2,7 +2,7 @@
 
 import streamlit as st
 
-from swan_ui.mock import get_mock_results
+from swan_ui.client import fetch_recommendations, RecommendationUnavailable
 from swan_ui.profile import Profile, preview_route
 
 
@@ -30,7 +30,7 @@ def navigate(view: str) -> None:
 
 def reset_demo() -> None:
     for key in list(st.session_state):
-        if key.startswith("q_") or key == "profile":
+        if key.startswith("q_") or key in {"profile", "recommendation_response"}:
             del st.session_state[key]
     st.session_state.view = "welcome"
 
@@ -50,10 +50,10 @@ def header() -> None:
     """, unsafe_allow_html=True)
     st.markdown('<div class="swan-wordmark">swan</div>', unsafe_allow_html=True)
     st.caption("A simpler skincare starting point")
-    st.info("Team prototype · All products are fictional examples. This version does not recommend or rank real products.")
+    st.caption("MVP · Moisturizer alternatives for acne-prone skin, with ingredient-based explanations.")
     with st.sidebar:
         st.markdown("### Your starting point")
-        steps = [("welcome", "01  Welcome"), ("questionnaire", "02  Your profile"), ("results", "03  Sample results")]
+        steps = [("welcome", "01  Welcome"), ("questionnaire", "02  Your profile"), ("results", "03  Your results")]
         view = st.session_state.get("view", "welcome")
         for key, label in steps:
             if key == view:
@@ -61,22 +61,22 @@ def header() -> None:
             else:
                 st.caption(label)
         st.divider()
-        st.caption("Explore three concerns. The acne-prone moisturizer path is available as a fictional preview; dryness and sensitivity are not available yet. Questionnaire wording remains a team draft.")
-        st.caption("Answers stay in this app session. The prototype does not save them to a file or send them to a recommendation service.")
+        st.caption("Explore three concerns. The acne-prone moisturizer path is available; dryness and sensitivity are not available yet. Skin type and reactivity do not yet change the baseline ranking.")
+        st.caption("Answers are sent to the Swan API to return results. Swan does not intentionally store questionnaire answers; please avoid entering identifying information.")
         st.button("Start over", key="reset", on_click=reset_demo, use_container_width=True)
 
 
 def welcome() -> None:
     st.markdown('<div class="swan-kicker">Less guesswork. A clearer starting point.</div>', unsafe_allow_html=True)
     st.title("Skincare, one step at a time.")
-    st.markdown('<p class="swan-lead">Explore a short questionnaire and preview how Swan could explain moisturizer suggestions. Help us shape the experience while the team reviews the product and ingredient data.</p>', unsafe_allow_html=True)
-    st.button("Explore the prototype", key="begin", type="primary", on_click=navigate, args=("questionnaire",))
+    st.markdown('<p class="swan-lead">Answer a short questionnaire to compare moisturizer alternatives and see which ingredient indicators contributed to their ranking.</p>', unsafe_allow_html=True)
+    st.button("Get started", key="begin", type="primary", on_click=navigate, args=("questionnaire",))
     st.write("")
     columns = st.columns(3)
-    for column, title, text in zip(columns, ["Tell us a little", "See the layout", "Understand the limits"], [
+    for column, title, text in zip(columns, ["Tell us a little", "Compare alternatives", "Understand the limits"], [
         "A few questions about your concerns and preferences. No name or photo needed.",
-        "Preview a moisturizer results screen with clearly labelled fictional products.",
-        "Real product matching and evidence-based explanations will follow the team's review.",
+        "See up to three alternatives from our reviewed MVP product pool.",
+        "Understand the ingredient indicators and the limits of this first version.",
     ]):
         with column:
             with st.container(border=True):
@@ -101,7 +101,7 @@ def questionnaire() -> None:
             st.session_state.setdefault(key, value)
     st.markdown('<div class="swan-kicker">02 / Your profile</div>', unsafe_allow_html=True)
     st.title("Let's start with you.")
-    st.write("The questions are a draft for team review. Your answers change the preview route, not the fictional product list.")
+    st.write("Your answers determine the available route and your selected ingredient exclusions. Skin type and reactivity are recorded but do not yet change the baseline ranking.")
     with st.form("profile_form"):
         st.subheader("A few boundaries first")
         adult = st.radio("Are you 18 or older?", ["Yes", "No"], index=None, key="q_adult", horizontal=True)
@@ -114,10 +114,10 @@ def questionnaire() -> None:
             skin_type = st.selectbox("How would you describe your skin?", list(SKIN_TYPES), key="q_skin")
         with right:
             reactivity = st.radio("Does your skin react easily, such as stinging or redness?", list(REACTIVITY), key="q_reactivity")
-        blemish = st.select_slider("For acne-prone skin: how noticeable do your blemishes feel? (optional)", ["Prefer not to say", 1, 2, 3, 4, 5], key="q_blemish", help="Skip this for other concerns. 1 means less noticeable and 5 more noticeable to you. This is not a diagnostic scale and does not determine a medical threshold.")
+        blemish = st.select_slider("For acne-prone skin: how noticeable do your blemishes feel?", ["Prefer not to say", 1, 2, 3, 4, 5], key="q_blemish", help="Required for the acne-prone path. 1 means less noticeable and 5 more noticeable to you. Levels 4–5 are outside this MVP recommendation path; this is not a diagnosis.")
         avoid = st.multiselect("Ingredients you prefer to avoid (optional)", list(AVOID), key="q_avoid")
-        st.caption("Texture is left out until the team has reliable data to support it. Preferences are recorded for the future ranker; this preview does not filter products.")
-        submitted = st.form_submit_button("Preview the next step", type="primary")
+        st.caption("Fragrance and essential-oil exclusions filter products before ranking. Texture-based personalisation is planned for a later version.")
+        submitted = st.form_submit_button("See my results", type="primary")
     if submitted:
         if adult is None or concern is None or not flags:
             st.error("Please answer the age and concern questions, and select an option for the scope check.")
@@ -134,6 +134,11 @@ def questionnaire() -> None:
             reactivity=REACTIVITY[reactivity],
             avoid=tuple(AVOID[x] for x in avoid),
         )
+        route = preview_route(profile)
+        if route == "results" and (profile.blemish_level is None or profile.reactivity == "not_sure"):
+            st.error("Please choose a blemish level and answer the reactivity question for this recommendation path.")
+            return
+        st.session_state.pop("recommendation_response", None)
         st.session_state.profile = profile
         st.session_state.view = preview_route(profile)
         st.rerun()
@@ -144,25 +149,45 @@ def results() -> None:
     if profile is None:
         navigate("questionnaire")
         st.rerun()
-    st.markdown('<div class="swan-kicker">03 / Sample results</div>', unsafe_allow_html=True)
+    st.markdown('<div class="swan-kicker">03 / Your results</div>', unsafe_allow_html=True)
     st.title("A clearer way to compare.")
-    st.warning("Layout preview only. These are fictional moisturizers, shown in a fixed order. They are not personalized, filtered or scored from your answers.")
-    with st.expander("Your draft profile"):
-        skin = next(label for label, code in SKIN_TYPES.items() if code == profile.skin_type)
-        st.write(f"Skin type: {skin}")
-        st.write("Concern: acne-prone skin (draft scope)")
-        st.write("Preferences to avoid: " + (", ".join(label for label, code in AVOID.items() if code in profile.avoid) or "None selected"))
-    for column, product, letter in zip(st.columns(3), get_mock_results(profile), "ABC"):
-        with column:
-            with st.container(border=True):
-                st.markdown(f'<div class="swan-bottle">{letter}</div>', unsafe_allow_html=True)
-                st.caption("FICTIONAL PRODUCT · MOISTURIZER")
-                st.subheader(product.name)
-                st.write(product.description)
-                st.markdown("**Why this space is here**")
-                st.write("A source-backed explanation will appear here once the reviewed data and ranking rules are connected.")
-                st.caption("Ingredient list, evidence and suitability: not evaluated.")
-    st.caption("No real product has been selected. The prototype makes no promise of effectiveness or personal suitability.")
+    st.caption("These are moisturizer alternatives, not a three-product routine. The baseline uses ingredient indicators; it does not establish efficacy or personal suitability.")
+    st.caption("Skin type and reactivity do not currently change ranking. Your selected ingredient exclusions are applied.")
+    try:
+        if "recommendation_response" not in st.session_state:
+            with st.spinner("Finding available alternatives…"):
+                st.session_state.recommendation_response = fetch_recommendations(profile)
+        result = st.session_state.recommendation_response
+    except RecommendationUnavailable as exc:
+        st.error(str(exc))
+        st.button("Try again", key="retry")
+        st.button("Edit my answers", key="edit", on_click=navigate, args=("questionnaire",))
+        return
+    status = result.get("status")
+    if status == "coming_soon":
+        coming_soon()
+        return
+    if status in {"referral", "out_of_scope", "incomplete_profile"}:
+        st.info(result.get("message", "Please review your answers."))
+    elif status in {"ok", "insufficient_results", "no_result"}:
+        if status != "ok":
+            st.info(result.get("message", "No eligible alternatives are available."))
+        products = result["results"]
+        if products:
+            for column, product in zip(st.columns(len(products)), products):
+                with column:
+                    with st.container(border=True):
+                        st.caption("MOISTURIZER")
+                        st.subheader(product["product_name"])
+                        st.write(product["reason"])
+                        st.caption("Product code: " + product["code"])
+                        st.caption("Baseline indicator score: " + str(product["score"]))
+        with st.expander("About these results"):
+            st.write("Products are ranked using the agreed moisturising and acne-related indicators. Ties use product codes for a reproducible order. Ingredient concentration and clinical effectiveness are not assessed.")
+            st.caption("Catalogue: " + str(result.get("catalogue_version", "unavailable")))
+            st.caption("Ranker: " + str(result.get("ranker_version", "unavailable")))
+    else:
+        st.error("We could not read this recommendation response. Please try again later.")
     st.button("Edit my answers", key="edit", on_click=navigate, args=("questionnaire",))
 
 

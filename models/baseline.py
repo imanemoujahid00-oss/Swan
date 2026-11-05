@@ -1,48 +1,36 @@
-from pathlib import Path
-
-import pandas as pd
-
-
-# locate the raw_data folder from this Python file.
-project_folder = Path(__file__).resolve().parent.parent
-data_folder = project_folder / 'raw_data'
+"""Agreed +1/+1 baseline. Data loading is explicit/lazy for API readiness."""
+from models.data import default_baseline
 
 
-# load the prepared baseline inputs.
-ranking_data = pd.read_csv(
-    data_folder / 'baseline_ranking_data.csv',
-    dtype={
-        'code': str,
-        'moisturising_flag': bool,
-        'has_acne_active': bool
-    }
-)
-
-ingredient_table = pd.read_csv(
-    data_folder / "baseline_moisturising_ingredients.csv"
-)
-
-moisturising_ingredients = ingredient_table["ingredient"].tolist()
-
-scoring_table = pd.read_csv(
-    data_folder / 'baseline_scoring_table.csv'
-)
-
-weights = scoring_table.set_index('criterion')['weight'].to_dict()
+def __getattr__(name):
+    if name not in {"ranking_data", "moisturising_ingredients", "weights"}:
+        raise AttributeError(name)
+    baseline = default_baseline()
+    if name == "ranking_data":
+        return baseline.ranking_data
+    if name == "moisturising_ingredients":
+        return baseline.ingredients
+    if name == "weights":
+        return baseline.weights
+    raise AttributeError(name)
 
 
-def calculate_score(data):
+def calculate_score(data, weights=None):
+    if weights is None:
+        weights = default_baseline().weights
     return (
         data["moisturising_flag"].astype(int) * weights["moisturising"]
         + data["has_acne_active"].astype(int) * weights["acne_active"]
     )
 
 
-def explain_score(row):
+def explain_score(row, ingredients=None):
+    if ingredients is None:
+        ingredients = default_baseline().ingredients
     reasons = []
     detected_ingredients = []
 
-    for ingredient in moisturising_ingredients:
+    for ingredient in ingredients:
         if row[ingredient] == 1:
             detected_ingredients.append(ingredient)
 
@@ -63,9 +51,9 @@ def explain_score(row):
     return ". ".join(reasons)
 
 
-def rank_moisturizers(eligible_data):
+def rank_moisturizers(eligible_data, *, weights=None, ingredients=None):
     ranked = eligible_data.copy()
-    ranked["score"] = calculate_score(ranked)
+    ranked["score"] = calculate_score(ranked, weights)
 
     ranked = ranked.sort_values(
         by=["score", "code"],
@@ -81,7 +69,7 @@ def rank_moisturizers(eligible_data):
             "results": []
         }
 
-    results["reason"] = results.apply(explain_score, axis=1)
+    results["reason"] = results.apply(lambda row: explain_score(row, ingredients), axis=1)
 
     if len(results) < 3:
         status = "insufficient_results"
