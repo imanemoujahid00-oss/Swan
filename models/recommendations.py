@@ -1,3 +1,5 @@
+from numbers import Integral
+
 from models.baseline import rank_moisturizers
 
 
@@ -32,7 +34,7 @@ def check_scope(profile):
     
     level = profile.get('blemish_level')
     
-    if type(level) is not int or level not in [1, 2, 3, 4, 5]:
+    if isinstance(level, bool) or not isinstance(level, Integral) or level not in [1, 2, 3, 4, 5]:
         return 'incomplete_profile'
     
     if level >= 4:
