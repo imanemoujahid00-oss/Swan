@@ -1,0 +1,11 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: [build, -t, '${_REGISTRY}/api:${_TAG}', -f, Dockerfile, .]
+  - name: gcr.io/cloud-builders/docker
+    args: [build, -t, '${_REGISTRY}/ui:${_TAG}', -f, Dockerfile.ui, .]
+images:
+  - '${_REGISTRY}/api:${_TAG}'
+  - '${_REGISTRY}/ui:${_TAG}'
+options:
+  logging: CLOUD_LOGGING_ONLY
+timeout: 1200s
