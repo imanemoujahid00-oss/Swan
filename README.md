@@ -16,7 +16,7 @@ python scripts/download_data.py
 python -m pytest -q
 ```
 
-`requirements.txt` is the shared MVP runtime; it includes the existing pinned UI dependency. `requirements-dev.txt` adds the test tools. `requirements-notebooks.txt` adds Loredana's existing exploration/notebook libraries; those optional extras have not all been validated in the runtime environment. Lina’s GitHub requirements/imports were reconciled on 5 Nov: `rapidfuzz==3.14.5` and `openpyxl==3.1.5` are included in notebook extras; fuzzy matching and an Excel read/write smoke check passed. Her later shared Nov 3 notebooks only add pandas/numpy and standard-library imports, already covered. A teammate still needs to reproduce the setup. Do not commit `.venv`, `.env`, `raw_data`, caches or credentials.
+`requirements.txt` is the shared MVP runtime; it includes the existing pinned UI dependency. `requirements-dev.txt` adds the test tools. `requirements-notebooks.txt` adds the shared exploration/notebook libraries, including Lina's `rapidfuzz==3.14.5` and `openpyxl==3.1.5`. Full installation, dependency imports and pip check passed on Python 3.10.6; fuzzy matching and an Excel read/write smoke check also passed. This does not mean every notebook has been rerun. A teammate still needs to reproduce the setup. Do not commit `.venv`, `.env`, `raw_data`, caches or credentials.
 
 ## Exact runtime artifacts
 
