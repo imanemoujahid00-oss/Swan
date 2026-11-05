@@ -57,7 +57,7 @@ Set `SWAN_API_URL` to the deployed API for the hosted UI. The results path alway
 
 `tests/test_loredana_profiles.py` is copied from Loredana's updated branch (`e8520a0`) so her executable tests can run directly with the runtime files. It covers 6,400 answer combinations, exclusions, duplicates, invalid answers, aroma and stability. It does not require the separate 31-profile CSV. The two personalisation tests remain expected failures because skin type/reactivity do not yet alter ranking; these are documented post-MVP limits. Other tests exercise the API, absent data, strict input types, the UI flow and client failures. UI fixture tests are separate from the actual local API/browser check.
 
-The CI template in `docs/ci-checks.yml` downloads pinned artifacts and runs installation checks/tests on Python 3.10. It must be activated as `.github/workflows/checks.yml` using a GitHub login with workflow permission; the current CLI login cannot publish workflows. Local test success alone is not a hosted release.
+The active workflow in `.github/workflows/checks.yml` downloads pinned artifacts and runs installation checks/tests on Python 3.10. A readable copy is in `docs/ci-checks.yml`. Check the GitHub run result before merge; local test success alone is not a hosted release.
 
 ## Deployment
 
