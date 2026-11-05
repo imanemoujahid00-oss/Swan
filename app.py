@@ -1,6 +1,7 @@
 """Run with: python -m streamlit run app.py"""
 
 import base64
+import time
 from pathlib import Path
 
 import streamlit as st
@@ -33,7 +34,7 @@ def navigate(view: str) -> None:
 
 def reset_demo() -> None:
     for key in list(st.session_state):
-        if key.startswith("q_") or key in {"profile", "recommendation_response", "answers", "question_step", "reset_pending"}:
+        if key.startswith("q_") or key in {"profile", "recommendation_response", "answers", "question_step", "reset_pending", "slide_direction"}:
             del st.session_state[key]
     st.session_state.view = "welcome"
 
@@ -126,6 +127,21 @@ def profile_from_answers(a):
     )
 
 
+def slide_to(step: int) -> None:
+    current = st.session_state.get("question_step", 0)
+    direction = 1 if step > current else -1
+    # Animate the existing card before the rerun replaces it with the next card.
+    st.markdown(f"""<style>
+    @keyframes swan-exit-{current} {{to {{opacity:0;transform:translateX({-direction * 48}px);}}}}
+    .st-key-question_slide_{current} {{animation:swan-exit-{current} 180ms ease-in forwards !important;pointer-events:none;}}
+    @media(prefers-reduced-motion:reduce){{.st-key-question_slide_{current}{{animation:none !important;}}}}
+    </style>""", unsafe_allow_html=True)
+    time.sleep(.20)
+    st.session_state.slide_direction = direction
+    st.session_state.question_step = step
+    st.rerun()
+
+
 def questionnaire() -> None:
     # Permanent answers survive Streamlit's cleanup of widgets on hidden steps.
     st.session_state.setdefault("answers", DEFAULTS.copy())
@@ -134,77 +150,82 @@ def questionnaire() -> None:
     step = st.session_state.question_step
     st.markdown('<div class="swan-kicker">Your profile · A little clarity, one question at a time</div>', unsafe_allow_html=True)
     st.progress(min(step / 7, 1), text=f"Question {step + 1} of 7" if step < 7 else "Your profile is ready to review")
-    if step == 7:
-        st.title("Does this look like you?")
-        st.write("Review your answers before exploring the available route.")
-        for i, (key, _, label) in enumerate(QUESTIONS):
-            with st.container(border=True):
-                left, right = st.columns([5,1])
-                value = a[key]
-                left.markdown(f"**{label}**")
-                left.write(", ".join(value) if isinstance(value,list) and value else "No exclusions" if key == "q_avoid" else str(value))
-                if right.button("Edit", key=f"review_{i}"):
-                    st.session_state.question_step = i
-                    st.rerun()
-        st.caption("Skin type and reactivity are collected but do not yet change baseline ranking. Exclusions filter the available products.")
-        if st.button("See my results", key="submit_profile", type="primary"):
-            profile = profile_from_answers(a)
-            st.session_state.profile = profile
-            st.session_state.pop("recommendation_response", None)
-            st.session_state.view = preview_route(profile)
+    direction = st.session_state.get("slide_direction", 1)
+    st.markdown(f"""<style>
+    @keyframes swan-enter-{step} {{from {{opacity:0;transform:translateX({direction * 48}px);}} to {{opacity:1;transform:translateX(0);}}}}
+    .st-key-question_slide_{step} {{animation:swan-enter-{step} 280ms ease-out both;}}
+    @media(prefers-reduced-motion:reduce){{.st-key-question_slide_{step}{{animation:none;}}}}
+    </style>""", unsafe_allow_html=True)
+    with st.container(key=f"question_slide_{step}"):
+        if step == 7:
+            st.title("Does this look like you?")
+            st.write("Review your answers before exploring the available route.")
+            for i, (key, _, label) in enumerate(QUESTIONS):
+                with st.container(border=True):
+                    left, right = st.columns([5,1])
+                    value = a[key]
+                    left.markdown(f"**{label}**")
+                    left.write(", ".join(value) if isinstance(value,list) and value else "No exclusions" if key == "q_avoid" else str(value))
+                    if right.button("Edit", key=f"review_{i}"):
+                        slide_to(i)
+            st.caption("Skin type and reactivity are collected but do not yet change baseline ranking. Exclusions filter the available products.")
+            if st.button("See my results", key="submit_profile", type="primary"):
+                profile = profile_from_answers(a)
+                st.session_state.profile = profile
+                st.session_state.pop("recommendation_response", None)
+                st.session_state.view = preview_route(profile)
+                st.rerun()
+            return
+        key, title, label = QUESTIONS[step]
+        st.title(title)
+        st.session_state.setdefault(key, a[key])
+        kwargs = dict(key=key, on_change=save_answer, args=(key,))
+        with st.container(border=True):
+            if key == "q_adult":
+                st.radio(label, ["Yes","No"], index=None, horizontal=True, **kwargs)
+                st.caption("This first version is intended for adults.")
+            elif key == "q_concern":
+                st.radio(label, list(CONCERNS), index=None, **kwargs)
+                st.caption("Acne-prone moisturizer suggestions are available. Dryness and sensitivity will show a not-available-yet message.")
+            elif key == "q_flags":
+                st.multiselect(label, [NONE,*FLAGS], **kwargs)
+                st.caption("Choose None of these if none apply. These scope rules are not a clinical assessment.")
+            elif key == "q_skin":
+                st.selectbox(label, list(SKIN_TYPES), **kwargs)
+                st.caption("We’re collecting this for the wider experience; it does not yet change ranking.")
+            elif key == "q_reactivity":
+                st.radio(label, list(REACTIVITY), **kwargs)
+                st.caption("This answer does not automatically exclude fragrance or essential oils. Choose those exclusions in the preferences step.")
+            elif key == "q_blemish":
+                st.select_slider(label, ["Prefer not to say",1,2,3,4,5], **kwargs)
+                st.caption("1 = less noticeable · 5 = more noticeable. Levels 4–5 are outside this MVP recommendation path. This is not a diagnosis.")
+            else:
+                st.multiselect(label, list(AVOID), **kwargs)
+                st.caption("We apply these exclusions before ranking. Leave blank if you have no preference.")
+        left, right = st.columns([1,2])
+        if left.button("Back", key="previous_question"):
+            a[key] = st.session_state[key]
+            if step:
+                slide_to(step - 1)
+            else:
+                navigate("welcome")
             st.rerun()
-        return
-    key, title, label = QUESTIONS[step]
-    st.title(title)
-    st.session_state.setdefault(key, a[key])
-    kwargs = dict(key=key, on_change=save_answer, args=(key,))
-    with st.container(border=True):
-        if key == "q_adult":
-            st.radio(label, ["Yes","No"], index=None, horizontal=True, **kwargs)
-            st.caption("This first version is intended for adults.")
-        elif key == "q_concern":
-            st.radio(label, list(CONCERNS), index=None, **kwargs)
-            st.caption("Acne-prone moisturizer suggestions are available. Dryness and sensitivity will show a not-available-yet message.")
-        elif key == "q_flags":
-            st.multiselect(label, [NONE,*FLAGS], **kwargs)
-            st.caption("Choose None of these if none apply. These scope rules are not a clinical assessment.")
-        elif key == "q_skin":
-            st.selectbox(label, list(SKIN_TYPES), **kwargs)
-            st.caption("We’re collecting this for the wider experience; it does not yet change ranking.")
-        elif key == "q_reactivity":
-            st.radio(label, list(REACTIVITY), **kwargs)
-            st.caption("This answer does not automatically exclude fragrance or essential oils. Choose those exclusions in the preferences step.")
-        elif key == "q_blemish":
-            st.select_slider(label, ["Prefer not to say",1,2,3,4,5], **kwargs)
-            st.caption("1 = less noticeable · 5 = more noticeable. Levels 4–5 are outside this MVP recommendation path. This is not a diagnosis.")
-        else:
-            st.multiselect(label, list(AVOID), **kwargs)
-            st.caption("We apply these exclusions before ranking. Leave blank if you have no preference.")
-    left, right = st.columns([1,2])
-    if left.button("Back", key="previous_question"):
-        a[key] = st.session_state[key]
-        if step:
-            st.session_state.question_step -= 1
-        else:
-            navigate("welcome")
-        st.rerun()
-    if right.button("Review my answers" if step == 6 else "Continue", key="next_question", type="primary"):
-        a[key] = st.session_state[key]
-        value = a[key]
-        error = None
-        if key in {"q_adult","q_concern"} and value is None:
-            error = "Please select an answer to continue."
-        elif key == "q_flags" and (not value or NONE in value and len(value)>1):
-            error = "Choose either None of these or the options that apply."
-        elif key in {"q_reactivity","q_blemish"}:
-            p = profile_from_answers(a)
-            if preview_route(p) == "results" and (key == "q_reactivity" and value == "Not sure" or key == "q_blemish" and not isinstance(value,int)):
-                error = "Please choose an answer for this recommendation path."
-        if error:
-            st.error(error)
-        else:
-            st.session_state.question_step += 1
-            st.rerun()
+        if right.button("Review my answers" if step == 6 else "Continue", key="next_question", type="primary"):
+            a[key] = st.session_state[key]
+            value = a[key]
+            error = None
+            if key in {"q_adult","q_concern"} and value is None:
+                error = "Please select an answer to continue."
+            elif key == "q_flags" and (not value or NONE in value and len(value)>1):
+                error = "Choose either None of these or the options that apply."
+            elif key in {"q_reactivity","q_blemish"}:
+                p = profile_from_answers(a)
+                if preview_route(p) == "results" and (key == "q_reactivity" and value == "Not sure" or key == "q_blemish" and not isinstance(value,int)):
+                    error = "Please choose an answer for this recommendation path."
+            if error:
+                st.error(error)
+            else:
+                slide_to(step + 1)
 
 
 def results() -> None:
