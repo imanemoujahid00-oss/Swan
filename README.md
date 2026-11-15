@@ -68,3 +68,27 @@ No database or questionnaire-retention feature is implemented. Answers transit t
 ## After Friday
 
 The team agreed to work together on 7–8 November on further data cleaning, outstanding issues and additional outcomes. Preserve the working MVP first. At the start, name exact input/output files, owners, versions and links; use a separate improvement branch and data snapshot so the team does not lose track of which files are current. Detailed scope and time remain to agree.
+
+## Local Split panel with the catalogue v2 model
+
+From the repository root, install pandas in your Python environment.
+
+```sh
+python -m pip install pandas==2.2.3
+```
+
+Use the same three input files as notebook 06. Place them in `raw_data/` or set
+`SWAN_DATA_DIR` to their folder.
+
+- `catalogue_v2.csv`
+- `ingredient_matrix_v2.csv`
+- `Swan_CosIng_reference_2026-10-26.csv`
+
+Start the Split panel app from the repository root.
+
+```sh
+python -m swan_ui.split_panel.server
+```
+
+Open [Swan locally](http://127.0.0.1:8514/). If that port is busy, pass another
+port as the last argument and open the corresponding local address.
