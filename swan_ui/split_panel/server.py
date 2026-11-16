@@ -1,6 +1,7 @@
-"""Serve the Swan Split panel and its recommendation API on loopback."""
+"""Serve the Swan Split panel and its recommendation API locally or in a container."""
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
+import os
 from pathlib import Path
 import sys
 
@@ -98,5 +99,6 @@ class SwanHandler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else 8514
-    HTTPServer(("127.0.0.1", port), SwanHandler).serve_forever()
+    host = os.environ.get("SWAN_HOST", "127.0.0.1")
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else int(os.environ.get("PORT", "8514"))
+    HTTPServer((host, port), SwanHandler).serve_forever()

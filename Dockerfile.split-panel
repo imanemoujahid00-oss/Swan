@@ -1,0 +1,10 @@
+FROM python:3.10-slim
+WORKDIR /app
+RUN pip install --no-cache-dir pandas==2.2.3
+COPY swan_ui/__init__.py swan_ui/__init__.py
+COPY swan_ui/split_panel/ swan_ui/split_panel/
+COPY raw_data/catalogue_v2.csv raw_data/ingredient_matrix_v2.csv raw_data/Swan_CosIng_reference_2026-10-26.csv raw_data/
+ENV SWAN_HOST=0.0.0.0
+ENV PORT=8080
+USER 65534:65534
+CMD ["python", "-m", "swan_ui.split_panel.server"]
