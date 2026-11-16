@@ -217,6 +217,12 @@ const names=['Acne-prone skin and blemishes','Dryness and skin barrier','Sensiti
 const examples=['Spots, blackheads or clogged pores.','Skin that often feels tight, rough or flaky.','Skin that easily feels uncomfortable with new products.','See examples to help you choose a focus.'];
 const unsure="I’m not sure", none='None of the above';
 const safety=['I use a prescribed skincare treatment','I am pregnant or breastfeeding','I have a sudden, severe, painful, or unusual skin change','I have a known allergy to a skincare ingredient',none];
+const safetyGuidance = new Map([
+ [safety[0], "Because you use prescribed skincare, please check with your prescribing clinician before adding new products. Swan won't generate a routine in this version."],
+ [safety[1], "Swan doesn't provide personalized product recommendations during pregnancy or breastfeeding in this version. Ask a pharmacist or healthcare professional for advice."],
+ [safety[2], "A sudden, severe or unusual skin change needs assessment by a healthcare professional. Please seek medical advice rather than relying on a skincare recommendation."],
+ [safety[3], "Swan cannot yet verify a routine against your specific ingredient allergy. Please get professional guidance and check product ingredient labels."],
+]);
 const levels=['No blemishes right now','A few occasional spots','Several small spots or clogged pores','Frequent spots, sometimes inflamed','Many inflamed or painful spots','Deep, painful lumps or significant scarring'];
 const questions={
  adult:['Are you 18 or older?',['Yes','No']],
@@ -229,7 +235,7 @@ const questions={
 };
 const screen=document.querySelector('#screen'),frame=document.querySelector('#frame'),rail=document.querySelector('#rail');
 const layout='split';
-let view='welcome', answers={}, guidance='';
+let view='welcome', answers={}, guidance=[];
 const escapeHTML=v=>String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
 const path=()=>['adult','safety','concerns',...(answers.concerns?.filter(x=>names.includes(x)).length>1?['priority']:[]),...(answers.concerns?.includes(names[0])?['blemishes']:[]),'skin','reactivity'];
 const action=(id,label,primary=false)=>'<button class="button '+(primary?'primary':'')+'" id="'+id+'">'+label+'</button>';
@@ -254,11 +260,11 @@ function render(focus=false){
    if(view==='concerns'&&JSON.stringify(answers.concerns)!==JSON.stringify(selected)){delete answers.priority;delete answers.blemishes}
    answers[view]=multi?selected:selected[0];
    if(view==='concerns'&&selected[0]===unsure){go('help','forward');return}
-   if(view==='adult'&&selected[0]==='No')guidance='Swan’s routine preview is intended for adults.';
-   else if(view==='safety'&&selected[0]!==none)guidance=selected.includes(safety[1])?'Swan pauses product suggestions during pregnancy or breastfeeding.':'Swan pauses product suggestions for these answers.';
-   else if(view==='blemishes'&&levels.indexOf(selected[0])>=4)guidance='Swan pauses product suggestions for this blemish level.';
-   else guidance='';
-   go(guidance?'guidance':path()[index+1]||'review','forward');
+   guidance=[];
+   if(view==='adult'&&selected[0]==='No')guidance=["Swan's personalized routine is currently available only to adults aged 18 or over."];
+   else if(view==='safety')guidance=selected.map(flag=>safetyGuidance.get(flag)).filter(Boolean);
+   else if(view==='blemishes'&&levels.indexOf(selected[0])>=4)guidance=["Your answers describe acne that may need professional assessment. Please contact a healthcare professional or dermatologist. Swan won't recommend a routine in this version."];
+   go(guidance.length?'guidance':path()[index+1]||'review','forward');
   };
  }else if(view==='welcome'){
   screen.innerHTML='<div class="hero-copy"><h1 tabindex="-1">A routine for <em>your skin.</em></h1><p>Find a cleanser, moisturizer and facial sunscreen based on what your skin needs.</p>'+action('start','Build my routine',true)+'</div><div class="hero-media"><div class="hero-photo" role="img" aria-label="A woman touching her temple in afternoon light"></div></div>';
@@ -277,7 +283,7 @@ function render(focus=false){
    focus:focusLabel, skin:answers.skin, reactivity:answers.reactivity
   });
  }else{
-  screen.innerHTML=heading('Let’s pause here')+'<p>'+escapeHTML(guidance)+'</p>'+action('edit','Edit my answers',true);
+  screen.innerHTML=heading('Let’s pause here')+guidance.map(message=>'<p>'+escapeHTML(message)+'</p>').join('')+action('edit','Edit my answers',true);
   screen.querySelector('#edit').onclick=()=>go('adult');
  }
  const progress = screen.querySelector('.progress');
