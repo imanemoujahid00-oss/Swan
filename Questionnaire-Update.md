@@ -1,6 +1,4 @@
-# questionnaire update
-
-# Swan - Personalized Skincare Questionnaire
+# Swan — Personalized Skincare Questionnaire
 
 **Welcome to Swan!**
 
@@ -8,7 +6,7 @@ Let's find the skincare routine that suits your skin.
 
 Answer a few questions about your skin, concerns, and preferences. Swan will help you discover a cleanser, moisturizer, and facial sunscreen tailored to your needs.
 
-Your answers will help us personalize your recommendations.
+Swan gives cosmetic skincare guidance, not medical diagnosis or treatment.
 
 ## Questions
 
@@ -33,9 +31,7 @@ Your answers will help us personalize your recommendations.
 - I have a known allergy to a skincare ingredient.
 - None of the above.
 
-*Required. "None of the above" cannot be combined with other options.*
-
-Some answers may require additional questions, medical guidance, or a referral before Swan provides recommendations.
+*Required. “None of the above” is exclusive. Safety and referral decisions are evaluated before product ranking. For pregnancy/breastfeeding, the review draft specifies no routine; see the safety section.*
 
 ### **SECTION B — Your Skin Concerns**
 
@@ -47,17 +43,14 @@ Some answers may require additional questions, medical guidance, or a referral b
 - **Acne-prone skin and blemishes:** I experience pimples, blackheads, whiteheads, or clogged pores.
 - **Sensitive or easily irritated skin:** My skin reacts easily with redness, stinging, or discomfort.
 - I'm not sure
-- Something else
 
-*Required. "I'm not sure" and "Something else" are exclusive selections.*
+*Required. “I'm not sure” is exclusive. Display examples of the three concerns and allow the user to return to Q3; do not rank until a supported concern is selected, per the working review draft.*
 
 **Q4. Which of your selected concerns is your main priority?**
 
-*Only shown when more than one concern is selected.*
+- [Display only supported concerns selected in Q3]
 
-- [Display the concerns selected in Q3]
-
-*Required for users with multiple concerns.*
+*Only shown and required when more than one supported concern is selected. If exactly one is selected, set it automatically as `primary_concern`.*
 
 ### **SECTION C — Your Skin Characteristics**
 
@@ -69,7 +62,7 @@ Some answers may require additional questions, medical guidance, or a referral b
 - Normal — My skin usually feels balanced.
 - I'm not sure.
 
-*Required.*
+*Required for eligible users.*
 
 **Q6. How often does your skin feel dry, tight, rough, or flaky?**
 
@@ -79,24 +72,20 @@ Some answers may require additional questions, medical guidance, or a referral b
 - Almost every day
 - I'm not sure
 
-*Shown when dryness/barrier concerns are selected or when Q5 is Dry. Also available to uncertain users.*
+*Conditional: shown if dryness/barrier is selected or Q5 is Dry. Its effect on ranking has not yet been agreed.*
 
 **Q7. Which signs of dryness or barrier discomfort do you experience?**
 
 *Select all that apply.*
 
 - Tightness, especially after washing
-- Rough or flaky skin
-- Dry patches
 - Stinging when applying skincare
 - Redness or discomfort
 - None of these
 
-*Shown when dryness/barrier concerns are selected. "None" is exclusive.*
+*Conditional: shown when dryness/barrier is selected. “None of these” is exclusive. Its effect on ranking has not yet been agreed.*
 
 **Q8. Which option best describes your blemishes right now?**
-
-*Shown when acne-prone skin is selected.*
 
 - No blemishes right now
 - Level 1 — A few occasional spots or clogged pores
@@ -105,38 +94,19 @@ Some answers may require additional questions, medical guidance, or a referral b
 - Level 4 — Many inflamed or painful spots
 - Level 5 — Deep, painful lumps under the skin or significant scarring
 
-*Required for the acne-prone route.*
+*Required whenever acne-prone is selected, including when it is a secondary concern. “No blemishes right now” maps to `blemish_level: 0`. Level 4–5 enters the existing guidance/referral pathway before ranking.*
 
-Higher levels may require professional assessment instead of an automatic routine.
+**Q9. Does your skin react easily to new skincare products?**
 
-**Q9. How often does your skin react to new skincare products?**
+- Yes
+- No
+- Not sure
 
-- Rarely or never
-- Sometimes
-- Often
-- I'm not sure
-
-*Required for all users.*
-
-**Q10. What reactions have you experienced after applying skincare products?**
-
-*Select all that apply.*
-
-- Redness
-- Stinging or burning
-- Itching
-- Dryness or tightness
-- New blemishes or clogged pores
-- No noticeable reactions
-- I'm not sure
-
-*Shown if Q9 is Sometimes or Often.*
-
-"No noticeable reactions" and "I'm not sure" are exclusive selections.
+*Required for eligible users.*
 
 ### **SECTION D — Your Current Routine**
 
-**Q11. Which skincare products do you currently use?**
+**Q10. Which skincare products do you currently use?**
 
 *Select all that apply.*
 
@@ -148,7 +118,7 @@ Higher levels may require professional assessment instead of an automatic routin
 
 *Required. "None" is exclusive.*
 
-**Q12. How does your skin usually feel after cleansing?**
+**Q11. How does your skin usually feel after cleansing?**
 
 - Comfortable and balanced
 - Tight or dry
@@ -160,7 +130,7 @@ Higher levels may require professional assessment instead of an automatic routin
 
 ### **SECTION E — Product Preferences**
 
-**Q13. What texture do you prefer for your moisturizer?**
+**Q12. What texture do you prefer for your moisturizer?**
 
 - Lightweight gel or gel-cream
 - Light lotion
@@ -169,52 +139,21 @@ Higher levels may require professional assessment instead of an automatic routin
 
 *Optional.*
 
-**Q14. What kind of finish do you prefer from your facial sunscreen?**
+**Q13. What kind of cleanser do you prefer?**
 
-- Matte / shine-controlling
-- Natural
-- Hydrating / dewy
+- Rinse-off cleanser — I wash it off with water.
+- No-rinse cleanser — I remove it with a cotton pad or soft cloth, without rinsing.
 - No preference
 
 *Optional.*
-
-**Q15. Do you prefer tinted or non-tinted facial sunscreen?**
-
-- Tinted
-- Non-tinted
-- No preference
-
-*Optional.*
-
-### **SECTION F — Ingredients & Budget**
-
-**Q16. Are there any ingredients you prefer to avoid?**
-
-*Select all that apply.*
-
-- Fragrance
-- Essential oils
-- Other ingredients (please specify)
-- No preference
-
-*Required. "No preference" is exclusive.*
-
-Selected exclusions must be respected across all three products.
 
 **YOUR PERSONALIZED SWAN ROUTINE**
 
 Based on your answers, Swan will identify suitable products for:
 
-**Morning**
-
-1. Facial cleanser, when needed
-2. Moisturizer
-3. Facial sunscreen
-
-**Evening**
-
 1. Facial cleanser
 2. Moisturizer
+3. Facial sunscreen
 
 For every selected product, Swan will explain:
 
@@ -227,159 +166,99 @@ If Swan cannot verify a suitable product for a step, it will explain why instead
 
 **Important:** Swan provides cosmetic skincare guidance, not medical diagnosis or treatment. Individual skin tolerance varies. Always check the product packaging, especially if you have allergies.
 
-## How many questions will users actually answer?
+## Routing specification — questions displayed and expected outcomes
 
-Although the full questionnaire contains 17 questions, conditional routing means most users won't see all of them.
-
-| User profile | Likely questions shown |
-| --- | --- |
-| Acne-prone only | Q1–5, Q8–9, Q11–16 |
-| Dryness only | Q1–7, Q9, Q11–16 |
-| Sensitive only | Q1–5, Q9–16 with Q10 conditional |
-| Multiple concerns | All relevant concern-specific questions |
-| No reported reactivity | Skip Q10 |
-| One concern selected | Skip Q4 |
-
-For an average user, I would aim for approximately 11–13 short questions, including optional preferences. This is a design target to validate in usability testing, not a measured completion estimate.
-
-## How Swan should use each answer
-
-Not every question should influence ranking equally. Some determine safety, some identify suitable formulations, and others improve the experience.
-
-| Question | Main purpose | Impact |
+| Scenario | Conditional questions | Expected behavior |
 | --- | --- | --- |
-| Q1 Age | Eligibility | Hard requirement |
-| Q2 Safety | Identify referral or special review needs | Safety gate |
-| Q3 Concerns | Determine relevant matching criteria | High |
-| Q4 Priority | Prioritize overlapping concerns | High |
-| Q5 Skin type | Guide formulation suitability | Medium |
-| Q6 Dryness frequency | Assess hydration needs | High for dryness |
-| Q7 Dryness signs | Inform barrier-related matching | Medium |
-| Q8 Blemish level | Screen acne severity | Safety and scope |
-| Q9 Reactivity | Identify sensitivity considerations | High once validated |
-| Q10 Reaction types | Identify tolerability considerations | Medium |
-| Q11 Current routine | Tailor usage instructions | Low for product ranking |
-| Q12 After cleansing | Guide cleanser selection | High once validated |
-| Q13 Moisturizer texture | Personal preference | Medium |
-| Q14 Sunscreen finish | Personal preference | Medium |
-| Q15 Sunscreen tint | Personal preference | Medium |
-| Q16 Ingredient avoidance | Filter eligible products | Hard restriction |
+| Acne only | Q8; Q9 asked | Auto-set acne as primary; require Q8; rank for acne if safely eligible |
+| Dryness only | Q6–Q7; Q9 asked | Auto-set dryness as primary; rank for dryness if safely eligible |
+| Sensitivity only | Q9 asked; no Q8/Q6–Q7 unless Q5 = Dry | Auto-set sensitivity as primary; use sensitivity concern score; Q9 separately controls gentleness tie-break |
+| Acne + dryness | Q4, Q6–Q8, Q9 | Rank using selected primary concern; collect Q8 even if acne is secondary |
+| Acne + sensitivity | Q4, Q8, Q9 | Rank using selected primary concern; apply Q8 safety checks |
+| Dryness + sensitivity | Q4, Q6–Q7, Q9 | Rank using selected primary concern |
+| All three | Q4, Q6–Q8, Q9 | Rank using selected primary concern; apply all safety checks |
+| One supported concern | Skip Q4 | Derive `primary_concern` from Q3 |
+| Skin type Dry, without dryness selected | Q6; Q9 | Q6 collected; Q7 not shown unless dryness selected; ranking impact of Q6 pending |
+| Q3 = I'm not sure | No ranking yet | Display concern explanations and return to Q3 |
+| Q8 = level 0 | Q8 answered | Continue acne route; 0 is a valid answer |
+| Q8 missing when acne selected | Q8 required | Ask for missing answer before ranking |
+| Q8 = level 4 or 5 | Safety guidance | Do not generate routine in the current reviewed route |
+| Q9 = Yes | Q9 answered | At equal concern score, favor verified gentle candidate before moisturizer texture tie-break |
+| Q9 = No or Not sure | Q9 answered | No gentleness tie-break preference |
 
-## How the recommendation system should handle overlapping concerns
+### Ranking behavior for overlapping concerns
 
-For the full version, I recommend replacing three independent concern-specific ranking routes with a shared profile that combines the user's concerns.
+For the current Swan version:
 
-Example: A user with multiple concerns
+1. **Primary concern:** Determines ranking priority. With one concern, assign it automatically.
+2. **Secondary concerns:** Retain in the profile; do not assume additional scoring weights.
+3. **Reactivity:** When concern scores tie and Q9 is yes, prefer a catalogue-verified gentle product.
+4. **Skin-type:** For tied moisturizers, oily skin favors lightweight textures; dry skin favors rich textures, after the reactivity tie-break.
+5. **Unconfirmed effects:** Q6–Q7 and Q10–Q13 do not have confirmed additional ranking effects.
 
-Primary concern: Acne-prone skin
+Safety and referral checks always precede ranking (see Scope-and-Referral-Rules.md).
 
-Additional concern: Dryness
+## Safety and referral handling
 
-Skin type: Combination
+Swan applies eligibility and safety checks before generating recommendations.
 
-Reactivity: Often
+Users who meet a documented stop or referral condition do not receive a personalized routine.
 
-Ingredient restrictions: Avoid fragrance
+The authoritative eligibility rules, referral triggers, user-facing messages, and unresolved safety decisions are maintained in Scope-and-Referral-Rules.md.
 
-**Expected matching approach**
+Q8 acne levels 4–5 trigger the no-routine referral pathway, even when acne is a secondary concern. Q9 reactivity alone does not trigger referral.
 
-Cleanser: A gentle, non-stripping cleanser suitable for acne-prone skin and dryness.
-
-Moisturizer: A hydrating formulation with appropriate evidence of suitability for acne-prone skin.
-
-Sunscreen: A comfortable, low-irritation formula with verified SPF and UVA protection.
-
-## Safety and referral decisions for the final version
-
-The final app should adopt the following rules, subject to professional review.
-
-| Situation | Suggested handling |
-| --- | --- |
-| Under 18 | Stop: outside Swan's current scope |
-| Sudden severe reaction, swelling, blistering, or unusual lesion | Stop and provide appropriate medical guidance; urgent symptoms warrant urgent care |
-| Deep, painful blemishes or significant scarring | Refer for professional evaluation |
-| Using prescription skincare | Avoid modifying treatment; use a reviewed compatibility pathway or refer |
-| Pregnant or breastfeeding | Use a specifically reviewed eligibility and product pathway, or defer personalized recommendations |
-| Known ingredient allergy | Collect the exact allergen through a separate safety flow; only use verified exclusions |
-| Frequent stinging or irritation | Apply conservative suitability criteria and offer professional guidance if symptoms persist or are significant |
-
-## Test scenarios to add before launch
-
-The original 11 profiles remain valuable. For the full app, I would extend them to cover the new functionality.
-
-| ID | Test scenario | Expected outcome |
-| --- | --- | --- |
-| MC-01 | Acne-prone + dryness | Products satisfy both concerns |
-| MC-02 | Acne-prone + sensitivity | Low-irritation routine, appropriate acne suitability |
-| MC-03 | Dryness + sensitivity | Gentle, hydrating routine |
-| MC-04 | All three concerns | Prioritized, compatible routine |
-| DR-01 | Oily skin with frequent dryness | Hydration needs are not ignored |
-| SI-03 | Frequent stinging after cleansing | Conservative cleanser matching and safety screening |
-| SP-01 | Tinted sunscreen preference | Prefer verified tinted candidates |
-| SP-02 | No sunscreen matches restrictions | Show partial routine and explain the missing step |
-| AL-01 | Known allergy | Strict verified exclusion or referral |
-| UN-01 | Unknown skin type and concerns | Provide a conservative basic routine if eligible |
-| RT-01 | User already has a routine | Adapt usage instructions without assuming existing products are suitable |
-
-## Profile
+## Profile Schema
 
 ### A. Safety & Eligibility
 
 | Field | Question | Values | Required | Default |
 | --- | --- | --- | --- | --- |
 | `is_adult` | Q1 | `true` / `false` | Yes | — |
-| `safety_flags` | Q2 | `prescribed_treatment`, `pregnant_or_breastfeeding`, `unusual_skin_change`, `known_allergy` | Yes | `[]` |
+| `safety_flags` | Q2 | `prescribed_treatment`, `pregnant_or_breastfeeding`, `unusual_skin_change`, `known_allergy` | Yes | — |
+
+- `—` means no automatic default; a required answer must be collected.
+- `safety_flags=[]` is valid only after Q2 is answered with "None of the above".
 
 ### B. Skin Concerns
 
 | Field | Question | Values | Required | Default |
 | --- | --- | --- | --- | --- |
-| `concerns` | Q3 | `dryness_barrier`, `acne_prone`, `sensitive_skin`, `not_sure`, `other` | Yes | `[]` |
+| `concerns` | Q3 | `dryness_barrier`, `acne_prone`, `sensitive_skin`, `not_sure` | Yes | — |
 | `primary_concern` | Q4 | `dryness_barrier`, `acne_prone`, `sensitive_skin` | If multiple concerns selected | — |
 
-`concerns` is a list, allowing users to select multiple concerns. `not_sure` and `other` are exclusive choices.
+`concerns` is a list, allowing users to select multiple concerns. `not_sure` is an exclusive choice.
 
 ### C. Skin Characteristics
 
 | Field | Question | Values | Required | Default |
 | --- | --- | --- | --- | --- |
 | `skin_type` | Q5 | `oily`, `combination`, `normal`, `dry`, `not_sure` | If eligible | — |
-| `dryness_frequency` | Q6 | `never`, `occasionally`, `often`, `almost_daily`, `not_sure` | Conditional | `null` |
-| `dryness_signs` | Q7 | `tightness`, `flaking`, `dry_patches`, `stinging`, `redness`, `none` | Conditional | `[]` |
+| `dryness_frequency` | Q6 | `never`, `occasionally`, `often`, `almost_daily`, `not_sure` | When displayed | `null` |
+| `dryness_signs` | Q7 | `tightness`, `stinging`, `redness`, `none` | Proposed: when displayed | `null` |
 | `blemish_level` | Q8 | `0` to `5` | If acne-prone | `null` |
-| `reactivity` | Q9 | `rarely_never`, `sometimes`, `often`, `not_sure` | If eligible | — |
-| `reaction_types` | Q10 | `redness`, `stinging_burning`, `itching`, `dryness_tightness`, `breakouts`, `none`, `not_sure` | Conditional | `[]` |
+| `reactivity` | Q9 | `yes`, `no`, `not_sure` | Eligible users | No default |
 
 **Notes:**
 
 - `blemish_level = 0` means no current blemishes.
 - `blemish_level = null` means the question was not applicable or not answered.
-- Q6–Q7 appear for relevant dryness/barrier profiles.
-- Q10 appears when reactivity is `sometimes` or `often`.
 
 ### D. Current Skincare Routine
 
 | Field | Question | Values | Required | Default |
 | --- | --- | --- | --- | --- |
-| `current_products` | Q11 | `cleanser`, `moisturizer`, `sunscreen`, `actives`, `none` | If eligible | `[]` |
-| `after_cleansing` | Q12 | `comfortable`, `tight_dry`, `still_oily`, `irritated`, `not_sure` | If eligible | — |
+| `current_products` | Q10 | `cleanser`, `moisturizer`, `sunscreen`, `actives`, `none` | If eligible | — |
+| `after_cleansing` | Q11 | `comfortable`, `tight_dry`, `still_oily`, `irritated`, `not_sure` | If eligible | — |
+
+- `current_products=["none"]` represents an explicit Q10 "None" selection.
 
 ### E. Product Preferences
 
 | Field | Question | Values | Required | Default |
 | --- | --- | --- | --- | --- |
-| `moisturizer_texture` | Q13 | `gel`, `lotion`, `rich_cream`, `no_preference` | No | `no_preference` |
-| `sunscreen_finish` | Q14 | `matte`, `natural`, `dewy`, `no_preference` | No | `no_preference` |
-| `sunscreen_tint` | Q15 | `tinted`, `non_tinted`, `no_preference` | No | `no_preference` |
-
-### F. Ingredients & Budget
-
-| Field | Question | Values | Required | Default |
-| --- | --- | --- | --- | --- |
-| `avoid` | Q16 | `fragrance`, `essential_oils`, `other` | No | `[]` |
-| `other_avoid_ingredients` | Q16 | List of ingredient names | If `other` selected | `[]` |
-
----
+| `moisturizer_texture` | Q12 | `gel`, `lotion`, `rich_cream`, `no_preference` | No | `no_preference` |
+| `cleanser_type` | Q13 | `rinse_off`, `no_rinse`, `no_preference` | No | `no_preference` |
 
 ## Additional System Fields
 
@@ -390,22 +269,31 @@ These fields are calculated by Swan rather than answered directly by the user.
 | `eligibility_status` | `eligible`, `out_of_scope`, `requires_review`, `referred` | Determines whether recommendations may proceed |
 | `routine_status` | `complete`, `partial`, `empty`, `not_generated` | Describes recommendation completeness |
 
-## Validation Rules
+## Validation and missing-data behavior
 
-1. Q1 and Q2 are required before continuing.
-2. If the user is under 18, stop the questionnaire.
-3. If a safety flag is selected, apply the corresponding safety pathway before product ranking.
-4. Allow multiple skin concerns, but only one primary concern.
-5. Require `blemish_level` only for acne-prone users.
-6. Allow `blemish_level = 0` to represent no current blemishes.
-7. Use `null` for questions that were not asked.
-8. Apply verified ingredient exclusions to all three product categories.
-9. Do not automatically remove restrictions to produce a complete routine.
-10. If a product category has no eligible matches, return a partial or empty routine with an explanation.
+1. Require Q1–Q2 before proceeding. Missing safety answers must never be treated as negative answers.
+2. Q3 supports multiple concerns; not_sure is exclusive. Q4 is required for multiple concerns and automatically derived for a single concern.
+3. Q6 appears for dryness concern or dry skin type. Q7 appears for dryness concern; requiring its completion is pending team approval.
+4. Q8 is required whenever acne is selected, including as a secondary concern. 0 is valid; null is not equivalent to zero.
+5. Q9 is required for eligible users. not_sure is a valid answer, distinct from unanswered.
+6. The "None" selections in Q2, Q7, and Q10 are exclusive. Distinguish skipped or unanswered questions from explicitly selecting "None".
+7. Optional Q12–Q13 default to no_preference; do not assume unconfirmed ranking effects.
+8. Never infer ingredient absence from unknown catalogue data.
+9. routine_status is complete for three verified steps, partial for one or two, empty for none, and not_generated when ranking never runs.
+
+See **Scope-and-Referral-Rules.md** for detailed safety and referral handling.
+
+## Representative testing
+
+Representative single-concern, overlapping-concern, reactivity, skin-type, safety, missing-answer, and product-availability scenarios are maintained in:
+
+- Scope-and-Referral-Rules.md: Safety and referral acceptance tests.
+
+- Representative-Profiles-and-Relevance-Rubric.md: Canonical profiles and controlled ranking comparisons.
 
 **Example user profile**
 
-A user with combination skin, acne-prone skin, dryness, frequent reactivity, and fragrance avoidance
+A user with combination skin, acne-prone skin, dryness, and skin reactivity.
 
 ```json
 {
@@ -420,30 +308,15 @@ A user with combination skin, acne-prone skin, dryness, frequent reactivity, and
 
 "skin_type": "combination",
 "dryness_frequency": "often",
-"dryness_signs": [
-"tightness",
-"dry_patches"
-],
+"dryness_signs": ["tightness"],
 "blemish_level": 2,
 
-"reactivity": "often",
-"reaction_types": [
-"redness",
-"stinging_burning"
-],
-
-"current_products": [
-"cleanser",
-"moisturizer"
-],
+"reactivity": "yes",
+"current_products": ["cleanser", "moisturizer"],
 "after_cleansing": "tight_dry",
 
 "moisturizer_texture": "lotion",
-"sunscreen_finish": "natural",
-"sunscreen_tint": "non_tinted",
-
-"avoid": ["fragrance"],
-"other_avoid_ingredients": [],
+"cleanser_type": "rinse_off",
 
 "eligibility_status": "eligible",
 "routine_status": "not_generated"
