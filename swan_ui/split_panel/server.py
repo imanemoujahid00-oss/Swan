@@ -7,7 +7,7 @@ import sys
 
 import pandas as pd
 
-from .routine_model import assemble_routine, load_products, rank_by_role
+from .routine_model import CLEANSER_MODES, assemble_routine, load_products, product_photo, shopping_links, rank_by_role
 
 CONCERNS = {
     "Acne-prone skin and blemishes": "acne_prone",
@@ -15,6 +15,8 @@ CONCERNS = {
     "Sensitive or easily irritated skin": "sensitivity_irritation",
 }
 ROLES = {"cleanser": "Cleanser", "moisturizer": "Moisturizer", "sunscreen": "Facial sunscreen"}
+CLEANSER_PREFERENCES = {label: mode for mode, label in CLEANSER_MODES.items()}
+CLEANSER_PREFERENCES["No preference"] = None
 PRODUCTS = load_products()
 BY_CODE = PRODUCTS.set_index("code")
 PAGE = Path(__file__).with_name("index.html").read_bytes()
@@ -26,9 +28,10 @@ def build_routine(profile):
     reactivity = profile["reactivity"]
     if skin not in ("Oily", "Dry", "Combination", "Normal", "Not sure") or reactivity not in ("Yes", "No", "Not sure"):
         raise ValueError("Incomplete profile")
+    cleanser_mode = CLEANSER_PREFERENCES[profile.get("cleanser", "No preference")]
     ranked = rank_by_role(
         PRODUCTS, CONCERNS[focus], skin_type=skin.lower().replace(" ", "_"),
-        reactivity=reactivity.lower().replace(" ", "_"),
+        reactivity=reactivity.lower().replace(" ", "_"), cleanser_mode=cleanser_mode,
     )
     routine = assemble_routine(ranked)
     cards = []
@@ -40,28 +43,31 @@ def build_routine(profile):
             continue
         row = BY_CODE.loc[code]
         match = ranked[role].loc[lambda table: table["code"].eq(code)].iloc[0]
-        signals = match["applied_signals"]
-        if role == "sunscreen":
-            description = "Verified SPF."
-            if "moisturizing_signal" in signals:
-                description = "Verified SPF with moisturizing ingredients."
-        elif "has_acne_active" in signals:
-            description = "Swan found an ingredient associated with blemish-prone skincare."
-        elif "moisturizing_signal" in signals:
-            description = "Includes ingredients that help skin retain moisture."
-        else:
-            description = {
-                "cleanser": "Washes away surface oil and impurities.",
-                "moisturizer": "Adds moisture after cleansing.",
-            }[role]
-        if match["texture_priority"]:
-            description += " Light texture." if skin == "Oily" else " Rich texture."
-        brand = row.get("brands")
+        source_description = row.get("description")
+        description = str(source_description).strip() if pd.notna(source_description) else ""
+        if role == "cleanser":
+            rinse_mode = str(row.get("rinse_mode", "")).strip().lower()
+            if rinse_mode in CLEANSER_MODES:
+                card["cleanser_type"] = CLEANSER_MODES[rinse_mode]
+            if cleanser_mode is not None:
+                card["matches_preference"] = bool(match["cleanser_mode_match"])
+        brand = row.get("brand_display")
+        if pd.isna(brand):
+            brand = row.get("brands")
+        badge_text = row.get("badges")
+        badges = [badge.strip() for badge in str(badge_text).split("·") if badge.strip()] if pd.notna(badge_text) else []
+        if pd.notna(row["has_parfum"]) and bool(row["has_parfum"]):
+            badges = [badge for badge in badges if badge.lower() != "fragrance-free"]
         card.update(name=str(row["product_name"]), brand=str(brand).strip() if pd.notna(brand) else "",
                     description=description, ingredients=[
                         label for flag, label in (("has_parfum", "fragrance"), ("has_essential_oil", "essential oils"))
                         if pd.notna(row[flag]) and bool(row[flag])
                     ])
+        photo = product_photo(row)
+        if photo:
+            card["photo"] = photo
+        card["badges"] = badges
+        card["shopping_links"] = shopping_links(row)
     return {"status": routine["status"], "steps": cards}
 
 

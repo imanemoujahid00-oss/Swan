@@ -1,6 +1,7 @@
 """Local adapter using the ranking and catalogue preparation from Swan notebook 06."""
 import os
 from pathlib import Path
+from urllib.parse import urlsplit
 import pandas as pd
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -22,17 +23,22 @@ rules = pd.DataFrame(SCORING_RULES, columns=["concern", "role", "signal", "weigh
 ROUTINE_ROLES = ("cleanser", "moisturizer", "sunscreen")
 EXCLUSION_FIELDS = {"fragrance": "has_parfum", "essential_oils": "has_essential_oil"}
 
+CLEANSER_MODES = {"rinse-off": "Rinse-off", "leave-on": "No-rinse"}
+
 
 def as_flag(values):
     labels = values.astype("string").str.strip().str.lower()
     return labels.map({"true": True, "false": False}).astype("boolean")
 
 
-def rank_by_role(products, concern, *, avoid=(), skin_type=None, reactivity=None, rules=rules):
+def rank_by_role(products, concern, *, avoid=(), skin_type=None, reactivity=None, cleanser_mode=None, rules=rules):
     if concern not in rules["concern"].unique():
         raise ValueError("Unknown skin concern.")
     if isinstance(avoid, str) or any(item not in EXCLUSION_FIELDS for item in avoid):
         raise ValueError("Unknown exclusion.")
+
+    if cleanser_mode is not None and cleanser_mode not in CLEANSER_MODES:
+        raise ValueError("Unknown cleanser preference.")
 
     candidates = products.copy()
     candidates["code"] = candidates["code"].astype("string").str.strip()
@@ -75,9 +81,15 @@ def rank_by_role(products, concern, *, avoid=(), skin_type=None, reactivity=None
         if role == "moisturizer" and texture_field in eligible:
             eligible["texture_priority"] = as_flag(eligible[texture_field]).fillna(False)
 
+        # Prefer the requested cleanser type within the verified pool.
+        eligible["cleanser_mode_match"] = False
+        if role == "cleanser" and cleanser_mode is not None and "rinse_mode" in eligible:
+            modes = eligible["rinse_mode"].astype("string").str.strip().str.lower()
+            eligible["cleanser_mode_match"] = modes.eq(cleanser_mode).fillna(False)
+
         results[role] = eligible.sort_values(
-            ["score", "gentleness_priority", "texture_priority", "code"],
-            ascending=[False, False, False, True],
+            ["cleanser_mode_match", "score", "gentleness_priority", "texture_priority", "code"],
+            ascending=[False, False, False, False, True],
         )
     return results
 
@@ -128,9 +140,12 @@ def assemble_routine(ranked):
 
         labels = [SIGNAL_LABELS.get(signal, signal) for signal in row["applied_signals"]]
         reason = ", ".join(labels) if labels else "Eligible product with no score bonus for this profile."
-        same_score = ranked[role]["score"].eq(row["score"]).sum()
-        if position == 1 and same_score > 1:
-            tied = ranked[role].loc[ranked[role]["score"].eq(row["score"])]
+        candidates = ranked[role]
+        if row["cleanser_mode_match"]:
+            reason += " I prioritized the requested cleanser type."
+            candidates = candidates.loc[candidates["cleanser_mode_match"]]
+        tied = candidates.loc[candidates["score"].eq(row["score"])]
+        if position == 1 and len(tied) > 1:
             if row.get("gentleness_priority", False) and not tied["gentleness_priority"].all():
                 reason += " I prioritized the catalogue gentleness flag for this reactive profile."
                 tied = tied.loc[tied["gentleness_priority"]]
@@ -307,8 +322,33 @@ def load_products():
 
     # The shared European pool includes France-tagged products.
     market = as_flag(products["eu"]).fillna(False) | as_flag(products["france"]).fillna(False)
-    # Keep micellar products out of the primary cleanser slot.
-    micellar = products["role"].eq("cleanser") & products["product_name"].str.contains(
-        r"micell|micel", case=False, na=False
-    )
-    return products.loc[market & ~micellar].copy()
+    products = products.loc[market].copy()
+    return products
+
+
+def https_url(value):
+    if pd.isna(value):
+        return None
+    try:
+        parsed = urlsplit(value)
+    except ValueError:
+        return None
+    if parsed.scheme == "https" and parsed.hostname and parsed.username is None:
+        return value
+    return None
+
+
+def shopping_links(product):
+    url = https_url(product.get("shopping_url"))
+    return [{"url": url, "label": "Search on Google Shopping"}] if url else []
+
+
+def product_photo(product):
+    url = https_url(product.get("image_url"))
+    if not url:
+        return None
+    return {
+        "url": url,
+        "credit_url": https_url(product.get("product_url")),
+        "credit": str(product.get("image_credit", "Photo: Open Beauty Facts contributors, CC BY-SA")),
+    }
