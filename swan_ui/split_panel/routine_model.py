@@ -224,6 +224,9 @@ def load_products():
     if set(catalogue["code"]) != set(matrix["code"]):
         raise ValueError("Both files must cover the same product codes.")
 
+    # EcoClean WC REINIGER is a household toilet cleaner misclassified in v2.
+    catalogue = catalogue.loc[~catalogue["code"].eq("5708048047029")].copy()
+
     matrix_by_code = matrix.set_index("code").reindex(catalogue["code"])
 
     # I record the declared SPF and keep each source link for review.
