@@ -1,0 +1,16 @@
+{
+  "--canvas": "#f7f6f4",
+  "--paper": "#ffffff",
+  "--ink": "#19161e",
+  "--muted": "#605b67",
+  "--plum": "#c83f2e",
+  "--hover": "#a62d20",
+  "--blush": "#fff1ed",
+  "--peach": "#eaf3f8",
+  "--line": "#e4e0e7",
+  "--control": "#928b99",
+  "--focus": "#48256e",
+  "--accent-red": "#c83f2e",
+  "--accent-blue": "#71b4dc",
+  "--accent-purple": "#48256e"
+}
