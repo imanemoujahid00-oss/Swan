@@ -1,5 +1,7 @@
 """Local adapter using the ranking and catalogue preparation from Swan notebook 06."""
 import os
+import json
+import secrets
 from pathlib import Path
 from urllib.parse import urlsplit
 import pandas as pd
@@ -31,7 +33,7 @@ def as_flag(values):
     return labels.map({"true": True, "false": False}).astype("boolean")
 
 
-def rank_by_role(products, concern, *, avoid=(), skin_type=None, reactivity=None, cleanser_mode=None, rules=rules):
+def rank_by_role(products, concern, *, avoid=(), skin_type=None, reactivity=None, cleanser_mode=None, previous_sunscreen=None, rules=rules):
     if concern not in rules["concern"].unique():
         raise ValueError("Unknown skin concern.")
     if isinstance(avoid, str) or any(item not in EXCLUSION_FIELDS for item in avoid):
@@ -55,6 +57,10 @@ def rank_by_role(products, concern, *, avoid=(), skin_type=None, reactivity=None
         eligible = eligible.loc[as_flag(eligible["role_verified"]).eq(True).fillna(False)]
         if role == "sunscreen":
             eligible = eligible.loc[as_flag(eligible["sun_protection_verified"]).eq(True).fillna(False)]
+        if role == "sunscreen" and (concern == "sensitivity_irritation" or prefers_gentle):
+            # Local review policy: no forced fragranced or unverified fallback.
+            fragrance_free = as_flag(eligible.get("fragrance_free_verified", pd.Series(False, index=eligible.index))).fillna(False)
+            eligible = eligible.loc[fragrance_free & as_flag(eligible["has_parfum"]).eq(False).fillna(False)].copy()
         for item in avoid:
             field = EXCLUSION_FIELDS[item]
             if field not in eligible:
@@ -78,7 +84,7 @@ def rank_by_role(products, concern, *, avoid=(), skin_type=None, reactivity=None
         if prefers_gentle and "is_gentle" in eligible:
             eligible["gentleness_priority"] = as_flag(eligible["is_gentle"]).fillna(False)
         eligible["texture_priority"] = False
-        if role == "moisturizer" and texture_field in eligible:
+        if role in ("moisturizer", "sunscreen") and texture_field in eligible:
             eligible["texture_priority"] = as_flag(eligible[texture_field]).fillna(False)
 
         # Prefer the requested cleanser type within the verified pool.
@@ -87,10 +93,29 @@ def rank_by_role(products, concern, *, avoid=(), skin_type=None, reactivity=None
             modes = eligible["rinse_mode"].astype("string").str.strip().str.lower()
             eligible["cleanser_mode_match"] = modes.eq(cleanser_mode).fillna(False)
 
+        eligible["availability_priority"] = 1
+        if role == "sunscreen" and "online_availability_reviewed" in eligible:
+            eligible["availability_priority"] = eligible["online_availability_reviewed"].map({"available": 1, "unavailable": 0}).fillna(1)
         results[role] = eligible.sort_values(
-            ["cleanser_mode_match", "score", "gentleness_priority", "texture_priority", "code"],
-            ascending=[False, False, False, False, True],
+            ["cleanser_mode_match", "score", "gentleness_priority", "texture_priority", "availability_priority", "code"],
+            ascending=[False, False, False, False, False, True],
         )
+    # Vary only equally ranked sunscreens. Profile/quality priorities remain
+    # stronger than variety; the prior suggestion never lowers the match.
+    sunscreen = results["sunscreen"]
+    if len(sunscreen) > 1:
+        priorities = ["score", "gentleness_priority", "texture_priority", "availability_priority"]
+        top = sunscreen.iloc[0]
+        tied = sunscreen[priorities].eq(top[priorities]).all(axis=1)
+        options = sunscreen.loc[tied, "code"].tolist()
+        if len(options) > 1:
+            choices = [code for code in options if code != previous_sunscreen] or options
+            chosen = secrets.choice(choices)
+            results["sunscreen"] = pd.concat([
+                sunscreen.loc[sunscreen["code"].eq(chosen)],
+                sunscreen.loc[~sunscreen["code"].eq(chosen)],
+            ])
+            results["sunscreen"]["variety_selected"] = results["sunscreen"]["code"].eq(chosen)
     return results
 
 from itertools import product
@@ -152,8 +177,15 @@ def assemble_routine(ranked):
             if row.get("texture_priority", False) and not tied["texture_priority"].all():
                 reason += " I prioritized the texture flag matching this skin type."
                 tied = tied.loc[tied["texture_priority"]]
+            if len(tied) > 1 and "availability_priority" in tied:
+                if row["availability_priority"] > tied["availability_priority"].min():
+                    reason += " I deprioritized an option reported unavailable online at review."
+                    tied = tied.loc[tied["availability_priority"].eq(row["availability_priority"])]
             if len(tied) > 1:
-                reason += f" Product code broke the tie among {len(tied)} remaining candidates."
+                if row.get("variety_selected", False):
+                    reason += " Selected among equally ranked sunscreens, avoiding the previous suggestion when possible."
+                else:
+                    reason += f" Product code broke the tie among {len(tied)} remaining candidates."
         if position > 1:
             reason += f" Ranked {position} for this step and selected to avoid a duplicate product."
         steps.append({
@@ -323,6 +355,32 @@ def load_products():
     # The shared European pool includes France-tagged products.
     market = as_flag(products["eu"]).fillna(False) | as_flag(products["france"]).fillna(False)
     products = products.loc[market].copy()
+    if "fragrance_free_verified" in products:
+        products["fragrance_free_verified"] = as_flag(products["fragrance_free_verified"]).fillna(False)
+    else:
+        products["fragrance_free_verified"] = False
+    # Retain explicit reviewed claims from the extension without clearing a
+    # detected contradiction in the ingredient list.
+    reviewed_fragrance_free = products["fragrance_free_verified"] & ~products["has_parfum"].eq(True).fillna(False)
+    products.loc[reviewed_fragrance_free, "has_parfum"] = False
+    products.loc[~reviewed_fragrance_free, "fragrance_free_verified"] = False
+    # Local evidence overlay keeps Loredana's source CSV untouched.
+    review_path = Path(__file__).with_name("sunscreen_review_local.json")
+    if review_path.exists() and os.environ.get("SWAN_LOCAL_SUNSCREEN_REVIEW", "1") == "1":
+        for review in json.loads(review_path.read_text()):
+            matched = products["code"].eq(review["code"]) & products["role"].eq("sunscreen")
+            if matched.sum() != 1:
+                raise ValueError("Sunscreen review must match exactly one existing product.")
+            products.loc[matched, "sun_protection_verified"] = True
+            products.loc[matched, "declared_spf_reviewed"] = review["declared_spf"]
+            products.loc[matched, "fragrance_free_verified"] = review["fragrance_free_verified"]
+            products.loc[matched, "has_parfum"] = False
+            products.loc[matched, "is_light"] = str(review["is_light"])
+            products.loc[matched, "product_name"] = review["display_name"]
+            products.loc[matched, "description"] = review["description"]
+            products.loc[matched, "sunscreen_review_source"] = review["source_url"]
+            products.loc[matched, "sunscreen_review_note"] = review["note"]
+            products.loc[matched, "online_availability_reviewed"] = review["online_availability_reviewed"]
     return products
 
 

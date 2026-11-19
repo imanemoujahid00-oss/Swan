@@ -29,9 +29,12 @@ def build_routine(profile):
     if skin not in ("Oily", "Dry", "Combination", "Normal", "Not sure") or reactivity not in ("Yes", "No", "Not sure"):
         raise ValueError("Incomplete profile")
     cleanser_mode = CLEANSER_PREFERENCES[profile.get("cleanser", "No preference")]
+    previous_sunscreen = profile.get("previous_sunscreen")
+    if previous_sunscreen is not None and (not isinstance(previous_sunscreen, str) or len(previous_sunscreen) > 64):
+        raise ValueError("Invalid previous sunscreen")
     ranked = rank_by_role(
         PRODUCTS, CONCERNS[focus], skin_type=skin.lower().replace(" ", "_"),
-        reactivity=reactivity.lower().replace(" ", "_"), cleanser_mode=cleanser_mode,
+        reactivity=reactivity.lower().replace(" ", "_"), cleanser_mode=cleanser_mode, previous_sunscreen=previous_sunscreen,
     )
     routine = assemble_routine(ranked)
     cards = []
@@ -40,6 +43,8 @@ def build_routine(profile):
         card = {"role": ROLES[role]}
         cards.append(card)
         if code is None:
+            if role == "sunscreen" and (CONCERNS[focus] == "sensitivity_irritation" or reactivity == "Yes"):
+                card["unavailable_reason"] = "Swan could not verify a fragrance-free sunscreen for these answers."
             continue
         row = BY_CODE.loc[code]
         match = ranked[role].loc[lambda table: table["code"].eq(code)].iloc[0]
@@ -68,6 +73,11 @@ def build_routine(profile):
             card["photo"] = photo
         card["badges"] = badges
         card["shopping_links"] = shopping_links(row)
+        if role == "sunscreen":
+            card["code"] = str(code)
+            note = row.get("sunscreen_review_note")
+            if pd.notna(note):
+                card["review_note"] = str(note)
     return {"status": routine["status"], "steps": cards}
 
 

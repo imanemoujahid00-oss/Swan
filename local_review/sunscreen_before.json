@@ -1,0 +1,1307 @@
+[
+  {
+    "concern": "acne_prone",
+    "skin": "dry",
+    "reactivity": "yes",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 18 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "3600550880687",
+        "rank": 1,
+        "score": 1,
+        "reason": "acne signal recorded in catalogue v2 I prioritized the catalogue gentleness flag for this reactive profile. I prioritized the texture flag matching this skin type."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "acne_prone",
+    "skin": "dry",
+    "reactivity": "no",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "3600550164008",
+        "rank": 1,
+        "score": 1,
+        "reason": "acne signal recorded in catalogue v2 I prioritized the texture flag matching this skin type. Product code broke the tie among 4 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "acne_prone",
+    "skin": "dry",
+    "reactivity": "not_sure",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "3600550164008",
+        "rank": 1,
+        "score": 1,
+        "reason": "acne signal recorded in catalogue v2 I prioritized the texture flag matching this skin type. Product code broke the tie among 4 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "acne_prone",
+    "skin": "oily",
+    "reactivity": "yes",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 18 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "3600550880687",
+        "rank": 1,
+        "score": 1,
+        "reason": "acne signal recorded in catalogue v2 I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 3 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "acne_prone",
+    "skin": "oily",
+    "reactivity": "no",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "26023717",
+        "rank": 1,
+        "score": 1,
+        "reason": "acne signal recorded in catalogue v2 Product code broke the tie among 16 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "acne_prone",
+    "skin": "oily",
+    "reactivity": "not_sure",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "26023717",
+        "rank": 1,
+        "score": 1,
+        "reason": "acne signal recorded in catalogue v2 Product code broke the tie among 16 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "acne_prone",
+    "skin": "normal",
+    "reactivity": "yes",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 18 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "3600550880687",
+        "rank": 1,
+        "score": 1,
+        "reason": "acne signal recorded in catalogue v2 I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 3 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "acne_prone",
+    "skin": "normal",
+    "reactivity": "no",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "26023717",
+        "rank": 1,
+        "score": 1,
+        "reason": "acne signal recorded in catalogue v2 Product code broke the tie among 16 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "acne_prone",
+    "skin": "normal",
+    "reactivity": "not_sure",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "26023717",
+        "rank": 1,
+        "score": 1,
+        "reason": "acne signal recorded in catalogue v2 Product code broke the tie among 16 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "acne_prone",
+    "skin": "combination",
+    "reactivity": "yes",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 18 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "3600550880687",
+        "rank": 1,
+        "score": 1,
+        "reason": "acne signal recorded in catalogue v2 I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 3 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "acne_prone",
+    "skin": "combination",
+    "reactivity": "no",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "26023717",
+        "rank": 1,
+        "score": 1,
+        "reason": "acne signal recorded in catalogue v2 Product code broke the tie among 16 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "acne_prone",
+    "skin": "combination",
+    "reactivity": "not_sure",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "26023717",
+        "rank": 1,
+        "score": 1,
+        "reason": "acne signal recorded in catalogue v2 Product code broke the tie among 16 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "acne_prone",
+    "skin": "not_sure",
+    "reactivity": "yes",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 18 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "3600550880687",
+        "rank": 1,
+        "score": 1,
+        "reason": "acne signal recorded in catalogue v2 I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 3 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "acne_prone",
+    "skin": "not_sure",
+    "reactivity": "no",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "26023717",
+        "rank": 1,
+        "score": 1,
+        "reason": "acne signal recorded in catalogue v2 Product code broke the tie among 16 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "acne_prone",
+    "skin": "not_sure",
+    "reactivity": "not_sure",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "26023717",
+        "rank": 1,
+        "score": 1,
+        "reason": "acne signal recorded in catalogue v2 Product code broke the tie among 16 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "dryness_barrier",
+    "skin": "dry",
+    "reactivity": "yes",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 18 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "3282779348850",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected I prioritized the catalogue gentleness flag for this reactive profile. I prioritized the texture flag matching this skin type. Product code broke the tie among 4 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3506770501008",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 4 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "dryness_barrier",
+    "skin": "dry",
+    "reactivity": "no",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00027606",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected I prioritized the texture flag matching this skin type. Product code broke the tie among 28 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3506770501008",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 4 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "dryness_barrier",
+    "skin": "dry",
+    "reactivity": "not_sure",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00027606",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected I prioritized the texture flag matching this skin type. Product code broke the tie among 28 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3506770501008",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 4 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "dryness_barrier",
+    "skin": "oily",
+    "reactivity": "yes",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 18 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "8700216449632",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected I prioritized the catalogue gentleness flag for this reactive profile. I prioritized the texture flag matching this skin type. Product code broke the tie among 2 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3506770501008",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 4 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "dryness_barrier",
+    "skin": "oily",
+    "reactivity": "no",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "20237882",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected I prioritized the texture flag matching this skin type. Product code broke the tie among 8 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3506770501008",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 4 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "dryness_barrier",
+    "skin": "oily",
+    "reactivity": "not_sure",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "20237882",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected I prioritized the texture flag matching this skin type. Product code broke the tie among 8 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3506770501008",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 4 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "dryness_barrier",
+    "skin": "normal",
+    "reactivity": "yes",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 18 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "3282779348850",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 13 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3506770501008",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 4 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "dryness_barrier",
+    "skin": "normal",
+    "reactivity": "no",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00012282",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 104 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3506770501008",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 4 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "dryness_barrier",
+    "skin": "normal",
+    "reactivity": "not_sure",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00012282",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 104 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3506770501008",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 4 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "dryness_barrier",
+    "skin": "combination",
+    "reactivity": "yes",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 18 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "3282779348850",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 13 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3506770501008",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 4 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "dryness_barrier",
+    "skin": "combination",
+    "reactivity": "no",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00012282",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 104 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3506770501008",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 4 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "dryness_barrier",
+    "skin": "combination",
+    "reactivity": "not_sure",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00012282",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 104 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3506770501008",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 4 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "dryness_barrier",
+    "skin": "not_sure",
+    "reactivity": "yes",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 18 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "3282779348850",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 13 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3506770501008",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 4 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "dryness_barrier",
+    "skin": "not_sure",
+    "reactivity": "no",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00012282",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 104 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3506770501008",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 4 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "dryness_barrier",
+    "skin": "not_sure",
+    "reactivity": "not_sure",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00012282",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 104 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3506770501008",
+        "rank": 1,
+        "score": 1,
+        "reason": "moisturizing or humectant function detected Product code broke the tie among 4 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "sensitivity_irritation",
+    "skin": "dry",
+    "reactivity": "yes",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 18 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "3282779348850",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. I prioritized the texture flag matching this skin type. Product code broke the tie among 5 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "sensitivity_irritation",
+    "skin": "dry",
+    "reactivity": "no",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00027606",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the texture flag matching this skin type. Product code broke the tie among 32 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "sensitivity_irritation",
+    "skin": "dry",
+    "reactivity": "not_sure",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00027606",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the texture flag matching this skin type. Product code broke the tie among 32 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "sensitivity_irritation",
+    "skin": "oily",
+    "reactivity": "yes",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 18 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "8700216449632",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. I prioritized the texture flag matching this skin type. Product code broke the tie among 2 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "sensitivity_irritation",
+    "skin": "oily",
+    "reactivity": "no",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "20237882",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the texture flag matching this skin type. Product code broke the tie among 8 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "sensitivity_irritation",
+    "skin": "oily",
+    "reactivity": "not_sure",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "20237882",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the texture flag matching this skin type. Product code broke the tie among 8 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "sensitivity_irritation",
+    "skin": "normal",
+    "reactivity": "yes",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 18 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "3282779348850",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 15 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "sensitivity_irritation",
+    "skin": "normal",
+    "reactivity": "no",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00012282",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 111 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "sensitivity_irritation",
+    "skin": "normal",
+    "reactivity": "not_sure",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00012282",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 111 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "sensitivity_irritation",
+    "skin": "combination",
+    "reactivity": "yes",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 18 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "3282779348850",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 15 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "sensitivity_irritation",
+    "skin": "combination",
+    "reactivity": "no",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00012282",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 111 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "sensitivity_irritation",
+    "skin": "combination",
+    "reactivity": "not_sure",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00012282",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 111 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "sensitivity_irritation",
+    "skin": "not_sure",
+    "reactivity": "yes",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 18 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "3282779348850",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. I prioritized the catalogue gentleness flag for this reactive profile. Product code broke the tie among 15 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "sensitivity_irritation",
+    "skin": "not_sure",
+    "reactivity": "no",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00012282",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 111 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  },
+  {
+    "concern": "sensitivity_irritation",
+    "skin": "not_sure",
+    "reactivity": "not_sure",
+    "steps": [
+      {
+        "role": "cleanser",
+        "code": "20864781",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 57 remaining candidates."
+      },
+      {
+        "role": "moisturizer",
+        "code": "00012282",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 111 remaining candidates."
+      },
+      {
+        "role": "sunscreen",
+        "code": "3468080009332",
+        "rank": 1,
+        "score": 0,
+        "reason": "Eligible product with no score bonus for this profile. Product code broke the tie among 5 remaining candidates."
+      }
+    ],
+    "status": "ok"
+  }
+]

@@ -343,13 +343,17 @@ function shoppingLinks(links){
 }
 async function loadRoutine(output, profile){
  try {
+  let previousSunscreen;
+  try {previousSunscreen=sessionStorage.getItem('swan-last-sunscreen')||undefined;} catch {}
   const response=await fetch('/api/routine',{
    method:'POST',
    headers:{'Content-Type':'application/json'},
-   body:JSON.stringify(profile)
+   body:JSON.stringify({...profile,previous_sunscreen:previousSunscreen})
   });
   if(!response.ok) throw new Error('Routine unavailable');
   const routine=await response.json();
+  const sunscreen=routine.steps.find(step=>step.role==='Facial sunscreen');
+  try {if(sunscreen?.code) sessionStorage.setItem('swan-last-sunscreen',sunscreen.code);} catch {}
   const message={partial:'Here are the steps Swan could fill.',no_result:'Swan couldn’t verify any products for this routine.'}[routine.status];
   const cards=routine.steps.map(step=>{
    const label='<small>'+escapeHTML(step.role)+'</small>';
@@ -361,8 +365,9 @@ async function loadRoutine(output, profile){
        +(step.matches_preference===false?'<p class="note">Swan couldn’t match your cleanser preference for this routine.</p>':'')
        +(step.ingredients.length?'<p class="ingredient">Contains '+escapeHTML(step.ingredients.join(' and '))+'.</p>':'')
        +((step.badges||[]).length?'<ul class="product-badges">'+step.badges.map(badge=>'<li>'+escapeHTML(badge)+'</li>').join('')+'</ul>':'')
+       +(step.review_note?'<p class="ingredient">'+escapeHTML(step.review_note)+'</p>':'')
        +shoppingLinks(step.shopping_links)
-    : '<p>Swan couldn’t find a product for this step.</p>';
+    : '<p>'+escapeHTML(step.unavailable_reason||'Swan couldn’t find a product for this step.')+'</p>';
    return '<article class="product">'+label+productPhoto(step.photo)+product+'</article>';
   });
   output.innerHTML=(message?'<p class="note">'+message+'</p>':'')+'<div class="routine">'+cards.join('')+'</div>';

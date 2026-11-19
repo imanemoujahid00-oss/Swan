@@ -1,0 +1,28 @@
+[
+  {
+    "code": "4067796256239",
+    "declared_spf": "50",
+    "fragrance_free_verified": true,
+    "is_light": true,
+    "reviewed_on": "2026-11-19",
+    "source_url": "https://www.dm.de/p/d/3041574/sundance-sonnenfluid-gesicht-getoent-lsf-50",
+    "identity_basis": "Exact GTIN 4067796256239 on own-brand retailer page",
+    "display_name": "SUNDANCE tinted facial sun fluid SPF 50",
+    "description": "Tinted facial sunscreen with SPF 50 and a light texture. Fragrance-free.",
+    "note": "Tinted. Retailer page reported unavailable online at review; availability and delivery to France are not verified.",
+    "online_availability_reviewed": "unavailable"
+  },
+  {
+    "code": "7313272150896",
+    "declared_spf": "50",
+    "fragrance_free_verified": true,
+    "is_light": true,
+    "reviewed_on": "2026-11-19",
+    "source_url": "https://www.apoteket.se/produkt/apoteket-solcreme-spf-50-50-ml-tub-1558972/",
+    "identity_basis": "Exact brand, face cream SPF 50, 50 ml and matching complete ingredient list; GTIN not exposed on primary page",
+    "display_name": "Apoteket facial sun cream SPF 50",
+    "description": "Facial sunscreen with SPF 50 and a light, matte texture. Fragrance-free.",
+    "note": "Swedish retailer; shipping to France not verified.",
+    "online_availability_reviewed": "available"
+  }
+]

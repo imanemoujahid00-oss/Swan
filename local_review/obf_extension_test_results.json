@@ -1,0 +1,1226 @@
+{
+  "combinations_tested": 135,
+  "first_choice_counts_for_45_core_profiles": {
+    "Intense Protect SPF 50+": 36,
+    "Apoteket facial sun cream SPF 50": 3,
+    "Keracnyl UV anti-blemish fluid SPF 50+": 2,
+    "Anthelios UVMune 400 anti-dark-spot fluid SPF 50+": 4
+  },
+  "profiles": [
+    {
+      "concern": "acne_prone",
+      "skin": "dry",
+      "reactivity": "yes",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "dry",
+      "reactivity": "yes",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "dry",
+      "reactivity": "yes",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "dry",
+      "reactivity": "no",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "dry",
+      "reactivity": "no",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "dry",
+      "reactivity": "no",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "dry",
+      "reactivity": "not_sure",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "dry",
+      "reactivity": "not_sure",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "dry",
+      "reactivity": "not_sure",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "oily",
+      "reactivity": "yes",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "7313272150896",
+      "sunscreen_name": "Apoteket facial sun cream SPF 50",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "oily",
+      "reactivity": "yes",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "7313272150896",
+      "sunscreen_name": "Apoteket facial sun cream SPF 50",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "oily",
+      "reactivity": "yes",
+      "cleanser": "No preference",
+      "sunscreen_code": "7313272150896",
+      "sunscreen_name": "Apoteket facial sun cream SPF 50",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "oily",
+      "reactivity": "no",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770145175",
+      "sunscreen_name": "Keracnyl UV anti-blemish fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "oily",
+      "reactivity": "no",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770145175",
+      "sunscreen_name": "Keracnyl UV anti-blemish fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "oily",
+      "reactivity": "no",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770145175",
+      "sunscreen_name": "Keracnyl UV anti-blemish fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "oily",
+      "reactivity": "not_sure",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770145175",
+      "sunscreen_name": "Keracnyl UV anti-blemish fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "oily",
+      "reactivity": "not_sure",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770145175",
+      "sunscreen_name": "Keracnyl UV anti-blemish fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "oily",
+      "reactivity": "not_sure",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770145175",
+      "sunscreen_name": "Keracnyl UV anti-blemish fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "normal",
+      "reactivity": "yes",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "normal",
+      "reactivity": "yes",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "normal",
+      "reactivity": "yes",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "normal",
+      "reactivity": "no",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "normal",
+      "reactivity": "no",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "normal",
+      "reactivity": "no",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "normal",
+      "reactivity": "not_sure",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "normal",
+      "reactivity": "not_sure",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "normal",
+      "reactivity": "not_sure",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "combination",
+      "reactivity": "yes",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "combination",
+      "reactivity": "yes",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "combination",
+      "reactivity": "yes",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "combination",
+      "reactivity": "no",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "combination",
+      "reactivity": "no",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "combination",
+      "reactivity": "no",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "combination",
+      "reactivity": "not_sure",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "combination",
+      "reactivity": "not_sure",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "combination",
+      "reactivity": "not_sure",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "not_sure",
+      "reactivity": "yes",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "not_sure",
+      "reactivity": "yes",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "not_sure",
+      "reactivity": "yes",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "not_sure",
+      "reactivity": "no",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "not_sure",
+      "reactivity": "no",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "not_sure",
+      "reactivity": "no",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "not_sure",
+      "reactivity": "not_sure",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "not_sure",
+      "reactivity": "not_sure",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "acne_prone",
+      "skin": "not_sure",
+      "reactivity": "not_sure",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "dry",
+      "reactivity": "yes",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "dry",
+      "reactivity": "yes",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "dry",
+      "reactivity": "yes",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "dry",
+      "reactivity": "no",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "dry",
+      "reactivity": "no",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "dry",
+      "reactivity": "no",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "dry",
+      "reactivity": "not_sure",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "dry",
+      "reactivity": "not_sure",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "dry",
+      "reactivity": "not_sure",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "oily",
+      "reactivity": "yes",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "7313272150896",
+      "sunscreen_name": "Apoteket facial sun cream SPF 50",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "oily",
+      "reactivity": "yes",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "7313272150896",
+      "sunscreen_name": "Apoteket facial sun cream SPF 50",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "oily",
+      "reactivity": "yes",
+      "cleanser": "No preference",
+      "sunscreen_code": "7313272150896",
+      "sunscreen_name": "Apoteket facial sun cream SPF 50",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "oily",
+      "reactivity": "no",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3337875917407",
+      "sunscreen_name": "Anthelios UVMune 400 anti-dark-spot fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "oily",
+      "reactivity": "no",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3337875917407",
+      "sunscreen_name": "Anthelios UVMune 400 anti-dark-spot fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "oily",
+      "reactivity": "no",
+      "cleanser": "No preference",
+      "sunscreen_code": "3337875917407",
+      "sunscreen_name": "Anthelios UVMune 400 anti-dark-spot fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "oily",
+      "reactivity": "not_sure",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3337875917407",
+      "sunscreen_name": "Anthelios UVMune 400 anti-dark-spot fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "oily",
+      "reactivity": "not_sure",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3337875917407",
+      "sunscreen_name": "Anthelios UVMune 400 anti-dark-spot fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "oily",
+      "reactivity": "not_sure",
+      "cleanser": "No preference",
+      "sunscreen_code": "3337875917407",
+      "sunscreen_name": "Anthelios UVMune 400 anti-dark-spot fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "normal",
+      "reactivity": "yes",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "normal",
+      "reactivity": "yes",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "normal",
+      "reactivity": "yes",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "normal",
+      "reactivity": "no",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "normal",
+      "reactivity": "no",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "normal",
+      "reactivity": "no",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "normal",
+      "reactivity": "not_sure",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "normal",
+      "reactivity": "not_sure",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "normal",
+      "reactivity": "not_sure",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "combination",
+      "reactivity": "yes",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "combination",
+      "reactivity": "yes",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "combination",
+      "reactivity": "yes",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "combination",
+      "reactivity": "no",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "combination",
+      "reactivity": "no",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "combination",
+      "reactivity": "no",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "combination",
+      "reactivity": "not_sure",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "combination",
+      "reactivity": "not_sure",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "combination",
+      "reactivity": "not_sure",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "not_sure",
+      "reactivity": "yes",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "not_sure",
+      "reactivity": "yes",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "not_sure",
+      "reactivity": "yes",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "not_sure",
+      "reactivity": "no",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "not_sure",
+      "reactivity": "no",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "not_sure",
+      "reactivity": "no",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "not_sure",
+      "reactivity": "not_sure",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "not_sure",
+      "reactivity": "not_sure",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "dryness_barrier",
+      "skin": "not_sure",
+      "reactivity": "not_sure",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "dry",
+      "reactivity": "yes",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "dry",
+      "reactivity": "yes",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "dry",
+      "reactivity": "yes",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "dry",
+      "reactivity": "no",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "dry",
+      "reactivity": "no",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "dry",
+      "reactivity": "no",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "dry",
+      "reactivity": "not_sure",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "dry",
+      "reactivity": "not_sure",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "dry",
+      "reactivity": "not_sure",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "oily",
+      "reactivity": "yes",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "7313272150896",
+      "sunscreen_name": "Apoteket facial sun cream SPF 50",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "oily",
+      "reactivity": "yes",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "7313272150896",
+      "sunscreen_name": "Apoteket facial sun cream SPF 50",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "oily",
+      "reactivity": "yes",
+      "cleanser": "No preference",
+      "sunscreen_code": "7313272150896",
+      "sunscreen_name": "Apoteket facial sun cream SPF 50",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "oily",
+      "reactivity": "no",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3337875917407",
+      "sunscreen_name": "Anthelios UVMune 400 anti-dark-spot fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "oily",
+      "reactivity": "no",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3337875917407",
+      "sunscreen_name": "Anthelios UVMune 400 anti-dark-spot fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "oily",
+      "reactivity": "no",
+      "cleanser": "No preference",
+      "sunscreen_code": "3337875917407",
+      "sunscreen_name": "Anthelios UVMune 400 anti-dark-spot fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "oily",
+      "reactivity": "not_sure",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3337875917407",
+      "sunscreen_name": "Anthelios UVMune 400 anti-dark-spot fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "oily",
+      "reactivity": "not_sure",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3337875917407",
+      "sunscreen_name": "Anthelios UVMune 400 anti-dark-spot fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "oily",
+      "reactivity": "not_sure",
+      "cleanser": "No preference",
+      "sunscreen_code": "3337875917407",
+      "sunscreen_name": "Anthelios UVMune 400 anti-dark-spot fluid SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "normal",
+      "reactivity": "yes",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "normal",
+      "reactivity": "yes",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "normal",
+      "reactivity": "yes",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "normal",
+      "reactivity": "no",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "normal",
+      "reactivity": "no",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "normal",
+      "reactivity": "no",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "normal",
+      "reactivity": "not_sure",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "normal",
+      "reactivity": "not_sure",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "normal",
+      "reactivity": "not_sure",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "combination",
+      "reactivity": "yes",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "combination",
+      "reactivity": "yes",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "combination",
+      "reactivity": "yes",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "combination",
+      "reactivity": "no",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "combination",
+      "reactivity": "no",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "combination",
+      "reactivity": "no",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "combination",
+      "reactivity": "not_sure",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "combination",
+      "reactivity": "not_sure",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "combination",
+      "reactivity": "not_sure",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "not_sure",
+      "reactivity": "yes",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "not_sure",
+      "reactivity": "yes",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "not_sure",
+      "reactivity": "yes",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "not_sure",
+      "reactivity": "no",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "not_sure",
+      "reactivity": "no",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "not_sure",
+      "reactivity": "no",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "not_sure",
+      "reactivity": "not_sure",
+      "cleanser": "Rinse-off",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "not_sure",
+      "reactivity": "not_sure",
+      "cleanser": "No-rinse",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    },
+    {
+      "concern": "sensitivity_irritation",
+      "skin": "not_sure",
+      "reactivity": "not_sure",
+      "cleanser": "No preference",
+      "sunscreen_code": "3282770141214",
+      "sunscreen_name": "Intense Protect SPF 50+",
+      "status": "ok"
+    }
+  ]
+}
