@@ -1,0 +1,304 @@
+{
+  "checks": [
+    "Actual Google Font faces loaded 1440",
+    "Fonts loaded 1440",
+    "No horizontal overflow welcome 1440",
+    "Wordmark contained without overlap welcome 1440",
+    "Primary button contrast AA welcome 1440",
+    {
+      "screen": "welcome",
+      "width": 1440,
+      "metrics": {
+        "width": 1440,
+        "scroll": 1440,
+        "brand": {
+          "left": 138,
+          "right": 204.953125,
+          "height": 30
+        },
+        "reset": {
+          "left": 1223.578125
+        },
+        "header": {
+          "left": 111,
+          "right": 1329
+        },
+        "fonts": {
+          "heading": "\"Bebas Neue\", Impact, \"Arial Narrow\", sans-serif",
+          "body": "Barlow, system-ui, sans-serif"
+        }
+      }
+    },
+    "No horizontal overflow profile-first 1440",
+    "Wordmark contained without overlap profile-first 1440",
+    "Primary button contrast AA profile-first 1440",
+    {
+      "screen": "profile-first",
+      "width": 1440,
+      "metrics": {
+        "width": 1440,
+        "scroll": 1440,
+        "brand": {
+          "left": 138,
+          "right": 204.953125,
+          "height": 30
+        },
+        "reset": {
+          "left": 1223.578125
+        },
+        "header": {
+          "left": 111,
+          "right": 1329
+        },
+        "fonts": {
+          "heading": "\"Bebas Neue\", Impact, \"Arial Narrow\", sans-serif",
+          "body": "Barlow, system-ui, sans-serif"
+        }
+      }
+    },
+    "Required answer validation 1440",
+    "No horizontal overflow profile-last 1440",
+    "Wordmark contained without overlap profile-last 1440",
+    "Primary button contrast AA profile-last 1440",
+    {
+      "screen": "profile-last",
+      "width": 1440,
+      "metrics": {
+        "width": 1440,
+        "scroll": 1440,
+        "brand": {
+          "left": 138,
+          "right": 204.953125,
+          "height": 30
+        },
+        "reset": {
+          "left": 1223.578125
+        },
+        "header": {
+          "left": 111,
+          "right": 1329
+        },
+        "fonts": {
+          "heading": "\"Bebas Neue\", Impact, \"Arial Narrow\", sans-serif",
+          "body": "Barlow, system-ui, sans-serif"
+        }
+      }
+    },
+    "Three routine products Acne-prone skin and blemishes 1440",
+    "Sunscreen returned Acne-prone skin and blemishes 1440",
+    "No horizontal overflow routine 1440",
+    "Wordmark contained without overlap routine 1440",
+    {
+      "screen": "routine",
+      "width": 1440,
+      "metrics": {
+        "width": 1440,
+        "scroll": 1440,
+        "brand": {
+          "left": 138,
+          "right": 204.953125,
+          "height": 30
+        },
+        "reset": {
+          "left": 1223.578125
+        },
+        "header": {
+          "left": 111,
+          "right": 1329
+        },
+        "fonts": {
+          "heading": "\"Bebas Neue\", Impact, \"Arial Narrow\", sans-serif",
+          "body": "Barlow, system-ui, sans-serif"
+        }
+      }
+    },
+    "Three routine products Dryness and skin barrier 1440",
+    "Sunscreen returned Dryness and skin barrier 1440",
+    "Three routine products Sensitive or easily irritated skin 1440",
+    "Sunscreen returned Sensitive or easily irritated skin 1440",
+    "Under-18 referral preserved 1440",
+    "No horizontal overflow referral 1440",
+    "Wordmark contained without overlap referral 1440",
+    "Primary button contrast AA referral 1440",
+    {
+      "screen": "referral",
+      "width": 1440,
+      "metrics": {
+        "width": 1440,
+        "scroll": 1440,
+        "brand": {
+          "left": 138,
+          "right": 204.953125,
+          "height": 30
+        },
+        "reset": {
+          "left": 1223.578125
+        },
+        "header": {
+          "left": 111,
+          "right": 1329
+        },
+        "fonts": {
+          "heading": "\"Bebas Neue\", Impact, \"Arial Narrow\", sans-serif",
+          "body": "Barlow, system-ui, sans-serif"
+        }
+      }
+    },
+    "Edit retains answer 1440",
+    "Referral I use a prescribed skincare treatment 1440",
+    "Referral I am pregnant or breastfeeding 1440",
+    "Referral I have a sudden, severe, painful, or unusual skin change 1440",
+    "Referral I have a known allergy to a skincare ingredient 1440",
+    "Actual Google Font faces loaded 390",
+    "Fonts loaded 390",
+    "No horizontal overflow welcome 390",
+    "Wordmark contained without overlap welcome 390",
+    "Primary button contrast AA welcome 390",
+    {
+      "screen": "welcome",
+      "width": 390,
+      "metrics": {
+        "width": 390,
+        "scroll": 390,
+        "brand": {
+          "left": 38,
+          "right": 104.953125,
+          "height": 30
+        },
+        "reset": {
+          "left": 266.578125
+        },
+        "header": {
+          "left": 11,
+          "right": 379
+        },
+        "fonts": {
+          "heading": "\"Bebas Neue\", Impact, \"Arial Narrow\", sans-serif",
+          "body": "Barlow, system-ui, sans-serif"
+        }
+      }
+    },
+    "No horizontal overflow profile-first 390",
+    "Wordmark contained without overlap profile-first 390",
+    "Primary button contrast AA profile-first 390",
+    {
+      "screen": "profile-first",
+      "width": 390,
+      "metrics": {
+        "width": 390,
+        "scroll": 390,
+        "brand": {
+          "left": 38,
+          "right": 104.953125,
+          "height": 30
+        },
+        "reset": {
+          "left": 266.578125
+        },
+        "header": {
+          "left": 11,
+          "right": 379
+        },
+        "fonts": {
+          "heading": "\"Bebas Neue\", Impact, \"Arial Narrow\", sans-serif",
+          "body": "Barlow, system-ui, sans-serif"
+        }
+      }
+    },
+    "Required answer validation 390",
+    "No horizontal overflow profile-last 390",
+    "Wordmark contained without overlap profile-last 390",
+    "Primary button contrast AA profile-last 390",
+    {
+      "screen": "profile-last",
+      "width": 390,
+      "metrics": {
+        "width": 390,
+        "scroll": 390,
+        "brand": {
+          "left": 38,
+          "right": 104.953125,
+          "height": 30
+        },
+        "reset": {
+          "left": 266.578125
+        },
+        "header": {
+          "left": 11,
+          "right": 379
+        },
+        "fonts": {
+          "heading": "\"Bebas Neue\", Impact, \"Arial Narrow\", sans-serif",
+          "body": "Barlow, system-ui, sans-serif"
+        }
+      }
+    },
+    "Three routine products Acne-prone skin and blemishes 390",
+    "Sunscreen returned Acne-prone skin and blemishes 390",
+    "No horizontal overflow routine 390",
+    "Wordmark contained without overlap routine 390",
+    {
+      "screen": "routine",
+      "width": 390,
+      "metrics": {
+        "width": 390,
+        "scroll": 390,
+        "brand": {
+          "left": 38,
+          "right": 104.953125,
+          "height": 30
+        },
+        "reset": {
+          "left": 266.578125
+        },
+        "header": {
+          "left": 11,
+          "right": 379
+        },
+        "fonts": {
+          "heading": "\"Bebas Neue\", Impact, \"Arial Narrow\", sans-serif",
+          "body": "Barlow, system-ui, sans-serif"
+        }
+      }
+    },
+    "Three routine products Dryness and skin barrier 390",
+    "Sunscreen returned Dryness and skin barrier 390",
+    "Three routine products Sensitive or easily irritated skin 390",
+    "Sunscreen returned Sensitive or easily irritated skin 390",
+    "Under-18 referral preserved 390",
+    "No horizontal overflow referral 390",
+    "Wordmark contained without overlap referral 390",
+    "Primary button contrast AA referral 390",
+    {
+      "screen": "referral",
+      "width": 390,
+      "metrics": {
+        "width": 390,
+        "scroll": 390,
+        "brand": {
+          "left": 38,
+          "right": 104.953125,
+          "height": 30
+        },
+        "reset": {
+          "left": 266.578125
+        },
+        "header": {
+          "left": 11,
+          "right": 379
+        },
+        "fonts": {
+          "heading": "\"Bebas Neue\", Impact, \"Arial Narrow\", sans-serif",
+          "body": "Barlow, system-ui, sans-serif"
+        }
+      }
+    },
+    "Edit retains answer 390",
+    "Referral I use a prescribed skincare treatment 390",
+    "Referral I am pregnant or breastfeeding 390",
+    "Referral I have a sudden, severe, painful, or unusual skin change 390",
+    "Referral I have a known allergy to a skincare ingredient 390"
+  ],
+  "failures": [],
+  "network": []
+}

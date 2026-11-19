@@ -1,0 +1,46 @@
+
+==================================== ERRORS ====================================
+______________________ ERROR collecting tests/test_api.py ______________________
+ImportError while importing test module '/private/tmp/swan-publish.dAQ82r/tests/test_api.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Users/imanemoujahid/.pyenv/versions/3.10.6/lib/python3.10/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/test_api.py:3: in <module>
+    from fastapi.testclient import TestClient
+E   ModuleNotFoundError: No module named 'fastapi'
+______________________ ERROR collecting tests/test_app.py ______________________
+ImportError while importing test module '/private/tmp/swan-publish.dAQ82r/tests/test_app.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Users/imanemoujahid/.pyenv/versions/3.10.6/lib/python3.10/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/test_app.py:5: in <module>
+    from streamlit.testing.v1 import AppTest
+E   ModuleNotFoundError: No module named 'streamlit'
+_______________ ERROR collecting tests/test_loredana_profiles.py _______________
+tests/test_loredana_profiles.py:10: in <module>
+    from models.baseline import ranking_data            # the products the model can recommend
+models/baseline.py:8: in __getattr__
+    baseline = default_baseline()
+models/data.py:62: in default_baseline
+    return load_baseline(folder)
+models/data.py:28: in load_baseline
+    data = pd.read_csv(folder / FILES[0], dtype={"code": str})
+/Users/imanemoujahid/.pyenv/versions/Swan/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1026: in read_csv
+    return _read(filepath_or_buffer, kwds)
+/Users/imanemoujahid/.pyenv/versions/Swan/lib/python3.10/site-packages/pandas/io/parsers/readers.py:620: in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+/Users/imanemoujahid/.pyenv/versions/Swan/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1620: in __init__
+    self._engine = self._make_engine(f, self.engine)
+/Users/imanemoujahid/.pyenv/versions/Swan/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1880: in _make_engine
+    self.handles = get_handle(
+/Users/imanemoujahid/.pyenv/versions/Swan/lib/python3.10/site-packages/pandas/io/common.py:873: in get_handle
+    handle = open(
+E   FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/swan-publish.dAQ82r/raw_data/baseline_ranking_data.csv'
+=========================== short test summary info ============================
+ERROR tests/test_api.py
+ERROR tests/test_app.py
+ERROR tests/test_loredana_profiles.py - FileNotFoundError: [Errno 2] No such ...
+!!!!!!!!!!!!!!!!!!! Interrupted: 3 errors during collection !!!!!!!!!!!!!!!!!!!!
+3 errors in 0.40s

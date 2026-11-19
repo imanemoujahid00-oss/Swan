@@ -1,0 +1,32 @@
+{
+  "script_sha256": "9729209c45fb5a7c55f7e604f4f55e640c4a35434a5e12dde8ecc5e67e73b522",
+  "script_byte_identical": true,
+  "protected_files_byte_identical": [
+    "swan_ui/split_panel/server.py",
+    "swan_ui/split_panel/routine_model.py",
+    "swan_ui/split_panel/sunscreen_review_local.json",
+    "raw_data/catalogue_v2.csv",
+    "raw_data/ingredient_matrix_v2.csv",
+    "raw_data/Swan_CosIng_reference_2026-10-26.csv",
+    "swan_ui/split_panel/assets/skin-sensitivity.png",
+    "swan_ui/split_panel/assets/skin-blemishes.png",
+    "swan_ui/split_panel/assets/skin-dryness.png"
+  ],
+  "remaining_css_colours": [
+    "#111111",
+    "#4a2579",
+    "#53b4f0",
+    "#5b5b66",
+    "#8d8d96",
+    "#b9331f",
+    "#d9402c",
+    "#e3f2fc",
+    "#e4e1db",
+    "#faf9f7",
+    "#fdece8",
+    "#ffffff"
+  ],
+  "old_logo_matches": 0,
+  "old_typeface_matches": 0,
+  "old_palette_matches_excluding_requested_palette": 0
+}
