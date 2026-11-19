@@ -239,9 +239,9 @@ h1 {font-size:clamp(32px,4vw,54px);line-height:1.03}
 const names=['Acne-prone skin and blemishes','Dryness and skin barrier','Sensitive or easily irritated skin'];
 const examples=['Spots, blackheads or clogged pores.','Skin that often feels tight, rough or flaky.','Skin that easily feels uncomfortable with new products.','See examples to help you choose a focus.'];
 const concernImages=[
- {src:'/assets/blemishes.png',alt:'Illustration of a cheek with a few blemishes and small bumps'},
- {src:'/assets/dryness.png',alt:'Illustration of dry, flaky patches on a cheek'},
- {src:'/assets/sensitivity.png',alt:'Illustration of redness across a cheek and nose'}
+ {src:'/assets/skin-blemishes.png',alt:'Generated close-up example of skin with a few blemishes and small bumps'},
+ {src:'/assets/skin-dryness.png',alt:'Generated close-up example of dry skin with fine flakes'},
+ {src:'/assets/skin-sensitivity.png',alt:'Generated close-up example of skin with patchy redness'}
 ];
 const concernHelp=[
  ['You often notice spots, blackheads or small bumps from clogged pores. They may come and go, or keep appearing in the same areas.', 'Choose this focus if recurring blemishes are what you most want your routine to address. Your skin can also feel dry or sensitive.'],
@@ -309,7 +309,7 @@ function render(focus=false){
   screen.innerHTML='<div class="hero-copy"><h1 tabindex="-1">A routine for <em>your skin.</em></h1><p>Find a cleanser, moisturizer and facial sunscreen based on what your skin needs.</p>'+action('start','Build my routine',true)+'</div><div class="hero-media"><div class="hero-photo" role="img" aria-label="A woman touching her temple in afternoon light"></div></div>';
   screen.querySelector('#start').onclick=()=>go('adult','forward');
  }else if(view==='help'){
-  screen.innerHTML=heading('Find a focus for your routine')+'<p class="help-intro">Think about what you notice most often. These examples can help you choose a focus. Skin concerns can look different on different skin tones, and some signs are felt rather than seen.</p><div class="routine">'+names.map((n,i)=>'<section class="product concern-card"><figure class="concern-visual"><img src="'+concernImages[i].src+'" alt="'+escapeHTML(concernImages[i].alt)+'" width="1254" height="1254" loading="lazy"><figcaption>Illustrative example</figcaption></figure><div class="concern-copy"><h2>'+escapeHTML(n)+'</h2>'+concernHelp[i].map(text=>'<p>'+escapeHTML(text)+'</p>').join('')+'</div></section>').join('')+'</div><p class="help-overlap">If more than one concern sounds familiar, you can select them when you go back. Swan will ask which one matters most to you.</p><div class="actions">'+action('edit','Back to concerns',true)+'</div>';
+  screen.innerHTML=heading('Find a focus for your routine')+'<p class="help-intro">Think about what you notice most often. These examples can help you choose a focus. Skin concerns can look different on different skin tones, and some signs are felt rather than seen.</p><div class="routine">'+names.map((n,i)=>'<section class="product concern-card"><figure class="concern-visual"><img src="'+concernImages[i].src+'" alt="'+escapeHTML(concernImages[i].alt)+'" width="1254" height="1254" loading="lazy"><figcaption>AI-generated example</figcaption></figure><div class="concern-copy"><h2>'+escapeHTML(n)+'</h2>'+concernHelp[i].map(text=>'<p>'+escapeHTML(text)+'</p>').join('')+'</div></section>').join('')+'</div><p class="help-overlap">If more than one concern sounds familiar, you can select them when you go back. Swan will ask which one matters most to you.</p><div class="actions">'+action('edit','Back to concerns',true)+'</div>';
   screen.querySelector('#edit').onclick=()=>{delete answers.concerns;go('concerns')};
  }else if(view==='review'){
   screen.innerHTML=heading('Review your answers')+'<dl class="review">'+path().map(key=>'<div><dt>'+questions[key][0]+'</dt><dd>'+escapeHTML(Array.isArray(answers[key])?answers[key].join(', '):answers[key]||'')+'</dd></div>').join('')+'</dl><div class="actions">'+action('edit','Edit my answers')+action('show','See my routine',true)+'</div>';

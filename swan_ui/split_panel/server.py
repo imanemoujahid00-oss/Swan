@@ -81,7 +81,7 @@ class SwanHandler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_GET(self):
-        if self.path in {"/assets/blemishes.png", "/assets/dryness.png", "/assets/sensitivity.png"}:
+        if self.path in {"/assets/skin-blemishes.png", "/assets/skin-dryness.png", "/assets/skin-sensitivity.png"}:
             asset = Path(__file__).parent / self.path.lstrip("/")
             self.respond(200, "image/png", asset.read_bytes())
             return
